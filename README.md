@@ -139,13 +139,6 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
 - Agregação por cidade: **Braga 2072/3**, **Porto 948/2**, **nulo 429/5**;
 - Exportações `vendas_limpas.csv` e `resumo.json` transferidas para `FTP_remoto/`.
 
-## Autor
-
-- **Nome:** A PREENCHER
-- **Número:** A PREENCHER
-- **Email:** A PREENCHER
-- **Repositório Git:** A-PREENCHER-LINK-GIT
-
 ## Referências
 
 - Ferreira, L. e Ribeiro, Ó. (2026). _Enunciado do Trabalho Prático I de ISI_. IPCA.
