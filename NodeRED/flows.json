@@ -1,0 +1,251 @@
+[
+    {
+        "id": "5c48f299418418bf",
+        "type": "tab",
+        "label": "ISI Store"
+    },
+    {
+        "id": "df1737966336b7a1",
+        "type": "inject",
+        "z": "5c48f299418418bf",
+        "name": "inject 10s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "10",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "a3564fa0d86e469e"
+            ]
+        ]
+    },
+    {
+        "id": "a3564fa0d86e469e",
+        "type": "function",
+        "z": "5c48f299418418bf",
+        "name": "vendas",
+        "func": "msg.topic=\"isi/vendas\";\nlet q=1+Math.floor(Math.random()*3);\nmsg.payload={id_venda:\"STREAM-\"+Date.now(),id_produto:\"P005\",quantidade:q,preco_unit:199.99,total_linha:+(q*199.99).toFixed(2)};\nreturn msg;",
+        "outputs": 1,
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "7e382bf3e4f28f6f",
+                "842c267a7bef0936"
+            ]
+        ]
+    },
+    {
+        "id": "7e382bf3e4f28f6f",
+        "type": "mqtt out",
+        "z": "5c48f299418418bf",
+        "topic": "isi/vendas",
+        "qos": "0",
+        "retain": "false",
+        "broker": "665f20ed9075d114",
+        "x": 500,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "842c267a7bef0936",
+        "type": "debug",
+        "z": "5c48f299418418bf",
+        "tosidebar": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "0cfcaf860049408b",
+        "type": "inject",
+        "z": "5c48f299418418bf",
+        "name": "test",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "c93659b814bd1cb5"
+            ]
+        ]
+    },
+    {
+        "id": "c93659b814bd1cb5",
+        "type": "function",
+        "z": "5c48f299418418bf",
+        "name": "totais",
+        "func": "msg.payload=\"Braga 2072 | Porto 948 | null 429\";\nreturn msg;",
+        "outputs": 1,
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "ebc398806b44f4a4",
+                "ab74df361044b50e"
+            ]
+        ]
+    },
+    {
+        "id": "ebc398806b44f4a4",
+        "type": "ui_text",
+        "z": "5c48f299418418bf",
+        "group": "7981d2e653d15930",
+        "label": "Totais",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 500,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ab74df361044b50e",
+        "type": "debug",
+        "z": "5c48f299418418bf",
+        "tosidebar": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 290,
+        "wires": []
+    },
+    {
+        "id": "7dfcdbbcecc50e8e",
+        "type": "inject",
+        "z": "5c48f299418418bf",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "topic": "Braga",
+        "payload": "2072",
+        "payloadType": "num",
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "ad4f15e7a4b98b22"
+            ]
+        ]
+    },
+    {
+        "id": "9271971f782c7708",
+        "type": "inject",
+        "z": "5c48f299418418bf",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "topic": "Porto",
+        "payload": "948",
+        "payloadType": "num",
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "ad4f15e7a4b98b22"
+            ]
+        ]
+    },
+    {
+        "id": "da70322b19a47998",
+        "type": "inject",
+        "z": "5c48f299418418bf",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "topic": "null",
+        "payload": "429",
+        "payloadType": "num",
+        "x": 300,
+        "y": 460,
+        "wires": [
+            [
+                "ad4f15e7a4b98b22"
+            ]
+        ]
+    },
+    {
+        "id": "ad4f15e7a4b98b22",
+        "type": "ui_chart",
+        "z": "5c48f299418418bf",
+        "group": "7981d2e653d15930",
+        "label": "Totais por Cidade",
+        "chartType": "bar",
+        "outputs": 1,
+        "x": 500,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "665f20ed9075d114",
+        "type": "mqtt-broker",
+        "name": "Mosquitto local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "7981d2e653d15930",
+        "type": "ui_group",
+        "name": "Vendas",
+        "tab": "0e916c07679af543",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "0e916c07679af543",
+        "type": "ui_tab",
+        "name": "ISI Store",
+        "icon": "dashboard"
+    },
+    {
+        "id": "5851bd91e4d24133",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

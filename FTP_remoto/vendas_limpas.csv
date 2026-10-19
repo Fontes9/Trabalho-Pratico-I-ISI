@@ -1,0 +1,11 @@
+id_venda;id_cliente;id_produto;data;quantidade;preco_unit;total_linha;nome_cliente;cidade_cliente;nome_prod;categoria_prod
+V001;C001;P001;2026-10-01;2;899.99;1799.98;ana silva;Braga;Portatil Lenovo 15;Informatica
+V002;C002;P002;2026-10-02;1;29.9;29.9;;;Rato Logitech MX;Informatica
+V003;C003;P001;2026-10-03;1;899.99;899.99;Maria Costa;Porto;Portatil Lenovo 15;Informatica
+V004;C002;P003;2026-10-04;3;15.5;46.5;;;Cadeira Escritorio;Mobilia
+V006;C001;P003;2026-10-06;5;15.5;77.5;ana silva;Braga;Cadeira Escritorio;Mobilia
+V008;C005;P004;2026-10-08;2;49.99;99.98;;;Teclado Mecanico RGB;Informatica
+V009;C003;P004;2026-10-09;1;49.99;49.99;Maria Costa;Porto;Teclado Mecanico RGB;Informatica
+V010;C001;P005;2026-10-10;1;199.99;199.99;ana silva;Braga;Monitor LG 27 FullHD;Informatica
+V011;C002;P006;2026-10-11;2;79.9;159.8;;;Webcam Logitech C920;Informatica
+V012;C004;P007;2026-10-12;1;99.99;99.99;;;Headset HyperX Cloud;Informatica

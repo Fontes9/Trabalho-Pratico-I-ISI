@@ -1,0 +1,28 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Fase E no Spoon -- extrações paralelas: CSV, JSON, XML, Generate+REST e Table Input. Fonte: autor (2026).}}{10}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Log de execução E\_extracao -- 13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock. Fonte: autor (2026).}}{10}{figure.caption.5}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Preview vendas.csv -- 13 linhas com quantidade 0, duplicado V002, id\_cliente null e data errada. Fonte: autor (2026).}}{11}{figure.caption.6}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Preview clientes.json -- 6 linhas com email inválido, email null, NIF ABC123 e duplicado. Fonte: autor (2026).}}{11}{figure.caption.7}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Preview produtos.xml -- 158 produtos (P001-P158) com Loop XPath /produtos/produto. Fonte: autor (2026).}}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Preview REST client -- 1 linha status 200 com JSON FakeStore (trigger Generate Rows dummy=1). Fonte: autor (2026).}}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Preview Table Input -- 158 linhas da tabela stock. Fonte: autor (2026).}}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Tabelas dw\_vendas e stock na BD isi\_store. Fonte: autor (2026).}}{14}{figure.caption.11}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Conteúdo da tabela stock. Fonte: autor (2026).}}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Tabela dw\_vendas vazia antes da carga. Fonte: autor (2026).}}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Conexão PostgreSQL isi\_store testada com sucesso. Fonte: autor (2026).}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Filter Rows vendas -- 10 linhas após remover quantidade 0 e id\_cliente null. Fonte: autor (2026).}}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Calculator final vendas -- 10 linhas com total\_linha correto (V001 1799.98). Fonte: autor (2026).}}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Replace telemóvel -- normalização com Regex [\textbackslash s-] (912 345 678 para 912345678). Fonte: autor (2026).}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Validação Regex -- 6 clientes com email\_ok, telemovel\_ok e nif\_ok (2 limpos C001/C003). Fonte: autor (2026).}}{17}{figure.caption.18}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Clientes limpos -- 2 válidos após filtro Y/Y/Y com schema remapeado. Fonte: autor (2026).}}{18}{figure.caption.19}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Anonimização RGPD -- nif\_anon ******789 e email\_anon a***@gmail. Fonte: autor (2026).}}{18}{figure.caption.20}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Join 1 Stream Lookup vendas+clientes -- 10 linhas, nulls por integridade referencial. Fonte: autor (2026).}}{18}{figure.caption.21}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Join final Stream Lookup 2 +produtos -- 10 linhas com nome\_prod e categoria\_prod. Fonte: autor (2026).}}{18}{figure.caption.22}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Canvas T\_join completo -- vendas+clientes+produtos, 2 lookups, Sort+Group. Fonte: autor (2026).}}{19}{figure.caption.23}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Group By cidade\_cliente -- 3 linhas: null 429/5, Braga 2072/3, Porto 948/2. Fonte: autor (2026).}}{19}{figure.caption.24}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Job principal -- E, T, L, FTP csv/json, Mail e Write to Log com sucesso. Fonte: autor (2026).}}{20}{figure.caption.25}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Correio eletrónico de alerta com totais por cidade. Fonte: autor (2026).}}{20}{figure.caption.26}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Tabela dw\_vendas com 10 linhas e totais corretos (V001 1799.98). Fonte: autor (2026).}}{21}{figure.caption.27}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Ficheiros exportados em Dados\_Saida. Fonte: autor (2026).}}{21}{figure.caption.28}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Fluxos Node-RED -- streaming isi/vendas e painel. Fonte: autor (2026).}}{22}{figure.caption.29}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Painel com totais Braga 2072, Porto 948 e nulo 429. Fonte: autor (2026).}}{22}{figure.caption.30}%

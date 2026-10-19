@@ -1,0 +1,493 @@
+\documentclass[11pt,a4paper]{article}
+
+% Pacotes essenciais
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+
+% --- TIPOGRAFIA (do modelo) ---
+\usepackage{mathptmx}
+\usepackage{microtype}
+% ------------------------------
+
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{caption}
+% Cada título (section) começa em página nova
+\AddToHook{cmd/section/before}{\clearpage}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, calc}
+
+\addto\captionsportuguese{
+  \renewcommand{\lstlistingname}{Código}
+  \renewcommand{\lstlistlistingname}{Índice de Códigos}
+}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{upca}{HTML}{29ABE2}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{orange},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+             {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+             {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+             {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+             {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+             {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+             {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {º}{{\textsuperscript{o}}}1 {ª}{{\textsuperscript{a}}}1
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% Capa (estilo do modelo, conteúdo ISI)
+\begin{titlepage}
+    \centering
+    \vspace*{0.4cm}
+    % Logo UPCA (PNG com faixa branca a direita: compensacao para centragem otica)
+    \hspace*{0.035\textwidth}\includegraphics[width=0.3\textwidth]{imagens/logo_upca.png}
+
+    \vspace{0.7cm}
+    {\scshape\large Instituto Politécnico do Cávado e do Ave\par}
+    \vspace{0.15cm}
+    {\scshape\LARGE Escola Superior de Tecnologia\par}
+
+    \vspace{0.5cm}
+    {\color{upca}\rule{\textwidth}{1.2pt}}\par
+
+    \vspace{0.5cm}
+    {\large Licenciatura em Engenharia de Sistemas Informáticos\par}
+    \vspace{0.15cm}
+    {\large Unidade Curricular de Integração de Sistemas de Informação\par}
+    \vspace{0.15cm}
+    {\large 2026/27\par}
+
+    \vfill
+
+    {\huge\bfseries Trabalho Prático I\par}
+    \vspace{0.7cm}
+    {\color{upca}\rule{0.55\textwidth}{0.9pt}}\par
+    \vspace{0.7cm}
+    {\LARGE ISI Store --- Loja E-commerce\par}
+    \vspace{0.25cm}
+    {\Large Processo \textit{Extract, Transform and Load} (ETL)\par}
+
+    \vfill
+
+    {\large
+    \begin{tabular}{r@{\quad}l}
+      \textbf{Autor:} & A PREENCHER \\
+      \textbf{Número:} & A PREENCHER \\
+      \textbf{Email:} & A PREENCHER \\
+      \textbf{Repositório Git:} & \url{A-PREENCHER-LINK-GIT} \\
+    \end{tabular}\par}
+
+    \vspace{1.2cm}
+    {\large \today\par}
+\end{titlepage}
+
+\clearpage
+
+% Resumo
+\begin{abstract}
+O presente relatório documenta o processo de \textit{Extract, Transformation and Load} (ETL) desenvolvido para a loja fictícia ISI Store. O problema consistiu na dispersão de dados por sistemas isolados: vendas em CSV, clientes em JSON, catálogo em XML, \textit{stock} em base de dados relacional PostgreSQL e catálogo externo via API REST. No estado da arte compararam-se as plataformas Pentaho Data Integration, Talend Open Studio e KNIME, tendo-se selecionado o Pentaho pela orquestração visual de transformações e \textit{jobs} (Hitachi Vantara, 2026). A abordagem implementou extração multiformato, limpeza com expressões regulares, anonimização, junções e agregações, carga para \textit{Data Mart}, exportações CSV/JSON, notificações por correio eletrónico, transferência FTP e painel complementar em Node-RED com MQTT (Node-RED, 2026). Obteve-se execução integral válida: 13 vendas reduziram-se a 10 limpas, 6 clientes a 2 válidos, 158 produtos integrados, 10 linhas carregadas em \texttt{dw\_vendas} e agregação por cidade (Braga 2072/3, Porto 948/2, nulo 429/5). Concluiu-se que o processo cumpre as três fases obrigatórias do enunciado (Ferreira e Ribeiro, 2026).
+\end{abstract}
+
+\noindent\textbf{Palavras-chave:} ETL; Pentaho; Node-RED; MQTT; PostgreSQL; Expressões Regulares.
+
+\section*{Siglas}
+No presente documento utilizam-se as siglas abaixo, ordenadas alfabeticamente.
+\begin{itemize}
+\item BD -- Base de Dados
+\item CSV -- \textit{Comma-Separated Values}
+\item ETL -- \textit{Extract, Transformation and Load}
+\item FTP -- \textit{File Transfer Protocol}
+\item JSON -- \textit{JavaScript Object Notation}
+\item MQTT -- \textit{Message Queuing Telemetry Transport}
+\item REST -- \textit{Representational State Transfer}
+\item RGPD -- Regulamento Geral sobre a Proteção de Dados
+\item XML -- \textit{eXtensible Markup Language}
+\end{itemize}
+
+\clearpage
+
+% Índices (estilo do modelo)
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\lstlistoflistings
+\clearpage
+
+% 1. Enquadramento
+\section{Enquadramento}
+O presente capítulo apresenta o contexto do trabalho. A Secção~1.1 identifica a equipa e o contexto curricular, a Secção~1.2 define os objetivos, a Secção~1.3 descreve a metodologia de trabalho e a Secção~1.4 apresenta a estrutura do documento.
+
+\subsection{Equipa e contexto}
+O trabalho foi desenvolvido individualmente no âmbito da Unidade Curricular de Integração de Sistemas de Informação (ISI), da Licenciatura em Engenharia de Sistemas Informáticos, no ano letivo 2026/27. Decidiu-se explorar o tema ISI Store, uma loja fictícia de informática e mobiliário de escritório.
+
+\subsection{Objetivos}
+Definiram-se objetivos poucos e claros: (i) consolidar conceitos de integração de sistemas de informação com dados; (ii) especificar um cenário de aplicação de processos ETL; (iii) explorar o Pentaho Data Integration com ferramenta complementar Node-RED; (iv) documentar o processo com qualidade (Ferreira e Ribeiro, 2026).
+
+\subsection{Metodologia de trabalho}
+Seguiu-se uma metodologia por fases: especificação das fontes heterogéneas, implementação incremental E--T--L no Pentaho, validação por contagens e \textit{previews}, orquestração em \textit{Job} com correio eletrónico e FTP, integração complementar via MQTT e redação progressiva do relatório.
+
+\subsection{Estrutura do documento}
+A Secção~2 descreve o problema, a Secção~3 a estratégia e o enquadramento teórico e prático, a Secção~4 as transformações, a Secção~5 os \textit{jobs} e destinos, a Secção~6 o vídeo de demonstração, a Secção~7 a conclusão e a Secção~8 as referências.
+
+Plataforma principal: Pentaho Data Integration (Kettle / Spoon) Community Edition 10.2. Ferramentas complementares: PostgreSQL com DBeaver, Node-RED com Mosquitto e painel Node-RED Dashboard. Repositório Git: \url{A-PREENCHER-LINK-GIT}.
+
+% 2. Problema
+\section{Problema}
+O presente capítulo explora o problema, identifica a ausência de soluções e releva a pertinência do contexto atual.
+A loja ISI Store mantinha sistemas isolados: vendas da loja física em CSV, registo de clientes em JSON, catálogo em XML e \textit{stock} em PostgreSQL, sem visão consolidada. Verificou-se ausência de solução de integração, com dados sujos: duplicado V002, quantidade zero (V005), cliente nulo (V007) e data com formato errado (V009 com \texttt{/}), correio eletrónico inválido e NIF não numérico.
+
+Objetivo: construir um processo ETL completo que integre estas fontes, limpe e valide com expressões regulares, efetue junções e agregações, carregue um \textit{Data Mart} e gere alertas e painel de suporte à decisão (Ferreira e Ribeiro, 2026).
+
+% 3. Estratégia
+\section{Estratégia utilizada}
+O presente capítulo identifica os operadores e processos envolvidos. A Secção~3.1 compara as soluções existentes e a Secção~3.2 apresenta a arquitetura adotada.
+
+\subsection{Soluções existentes}
+Identificaram-se soluções no domínio da integração de dados: Pentaho Data Integration, Talend Open Studio e KNIME. A Tabela~\ref{tab:comparativo} compara-as segundo critérios alinhados com o trabalho: orquestração visual de transformações e \textit{jobs}, diversidade de conectores e integração complementar. Concluiu-se que o Pentaho se adequava melhor por combinar transformações e \textit{jobs} com correio eletrónico e FTP na mesma ferramenta visual, enquanto o Talend exige maior configuração e o KNIME se orienta mais para \textit{analytics} (Hitachi Vantara, 2026; Talend, 2026; KNIME, 2026).
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Critério & Pentaho 10.2 & Talend & KNIME \\ \hline
+Orquestração ETL + Job visual & Sim & Parcial & Parcial \\ \hline
+Conectores CSV/JSON/XML/REST/BD & Sim & Sim & Sim \\ \hline
+Email + FTP nativos no Job & Sim & Parcial & Não \\ \hline
+\end{tabular}
+\caption{Quadro comparativo de plataformas. Fonte: autor (2026).}
+\label{tab:comparativo}
+\end{table}
+
+\subsection{Arquitetura adotada}
+A arquitetura seguiu as três fases obrigatórias, sintetizadas na Tabela~\ref{tab:fontes}: fase E multiformato, fase T com limpeza, expressões regulares, junções e agregações, e fase L com persistência, exportações, notificações e painel. As expressões regulares utilizadas constam da Tabela~\ref{tab:regex} e as tabelas de destino no Código~\ref{cod:tabelas}.
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Fonte & Formato & Step Pentaho \\ \hline
+vendas.csv (ficheiro local) & CSV & CSV File Input \\ \hline
+clientes.json (ficheiro local) & JSON & JSON Input \\ \hline
+produtos.xml (ficheiro local) & XML & Get Data from XML \\ \hline
+API FakeStore & JSON REST & Generate Rows + REST Client \\ \hline
+stock BD PostgreSQL & Tabela SQL & Table Input \\ \hline
+\end{tabular}
+\caption{Fase E -- diversidade de formatos e fontes. Fonte: autor (2026).}
+\label{tab:fontes}
+\end{table}
+
+Fase T: Sort Rows, Unique Rows, Filter Rows, Regex Evaluation, Replace in String, Calculator, Stream Lookup, Group By e Write to Log.
+
+Fase L: Table Output (dw\_vendas), Text File Output (CSV) e JSON Output, Send Mail, FTP Put e Write to Log. Orquestração via Job.
+
+Regex utilizadas (Tabela~\ref{tab:regex}):
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Campo & Expressão regular \\ \hline
+Email & \verb|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$| \\ \hline
+Telemóvel PT após limpar \verb|[\s-]| & \verb|^9[1236][0-9]{7}$| \\ \hline
+NIF & \verb|^[0-9]{9}$| \\ \hline
+Data & \verb|^\d{4}-\d{2}-\d{2}$| \\ \hline
+\end{tabular}
+\caption{Expressões regulares aplicadas. Fonte: autor (2026).}
+\label{tab:regex}
+\end{table}
+
+Criação das tabelas de destino:
+\begin{lstlisting}[language=SQL, caption={Criação das tabelas dw\_vendas e stock na BD isi\_store. Fonte: autor (2026).}, label={cod:tabelas}]
+CREATE TABLE dw_vendas (
+  id_venda VARCHAR(10) PRIMARY KEY,
+  id_cliente VARCHAR(10),
+  id_produto VARCHAR(10),
+  data DATE,
+  quantidade INT,
+  preco_unit NUMERIC(10,2),
+  total_linha NUMERIC(10,2)
+);
+CREATE TABLE stock (
+  id_produto VARCHAR(10) PRIMARY KEY,
+  stock_atual INT
+);
+\end{lstlisting}
+
+% 4. Transformações
+\section{Transformações}
+O presente capítulo descreve as transformações implementadas. A Secção~4.1 apresenta a extração, a Secção~4.2 a limpeza de vendas, a Secção~4.3 a validação de clientes e a Secção~4.4 as junções e agregações.
+
+\subsection{E\_extracao.ktr}
+Implementou-se leitura paralela antes do processamento principal, com \textit{schemas} heterogéneos preservados (a junção efetuou-se na fase T). O canvas com os 6 \textit{steps} paralelos encontra-se na Figura~\ref{fig:e_extracao} e o log de execução na Figura~\ref{fig:e_log}: vendas W=13, clientes W=6, produtos W=158, REST W=1 e \textit{stock} W=158.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{imagens/e_extracao.png}
+\caption{Fase E no Spoon -- extrações paralelas: CSV, JSON, XML, Generate+REST e Table Input. Fonte: autor (2026).}
+\label{fig:e_extracao}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{imagens/e_log_rest_ok.png}
+\caption{Log de execução E\_extracao -- 13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock. Fonte: autor (2026).}
+\label{fig:e_log}
+\end{figure}
+
+Os dados de entrada evidenciam os problemas a tratar: a Figura~\ref{fig:preview_sujo} mostra as 13 vendas com quantidade zero, duplicado V002, cliente nulo e data errada; a Figura~\ref{fig:preview_clientes} mostra os 6 clientes com correio inválido, correio nulo, NIF não numérico e duplicado; a Figura~\ref{fig:preview_produtos} mostra os 158 produtos com \textit{Loop XPath}; a Figura~\ref{fig:rest_preview} mostra a resposta 200 da API FakeStore obtida com \textit{trigger} Generate Rows; e a Figura~\ref{fig:preview_stock} mostra as 158 linhas de \textit{stock}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_sujo.png}
+\caption{Preview vendas.csv -- 13 linhas com quantidade 0, duplicado V002, id\_cliente null e data errada. Fonte: autor (2026).}
+\label{fig:preview_sujo}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_clientes.png}
+\caption{Preview clientes.json -- 6 linhas com email inválido, email null, NIF ABC123 e duplicado. Fonte: autor (2026).}
+\label{fig:preview_clientes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_produtos.png}
+\caption{Preview produtos.xml -- 158 produtos (P001-P158) com Loop XPath /produtos/produto. Fonte: autor (2026).}
+\label{fig:preview_produtos}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{imagens/rest_preview.png}
+\caption{Preview REST client -- 1 linha status 200 com JSON FakeStore (trigger Generate Rows dummy=1). Fonte: autor (2026).}
+\label{fig:rest_preview}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_table_stock.png}
+\caption{Preview Table Input -- 158 linhas da tabela stock. Fonte: autor (2026).}
+\label{fig:preview_stock}
+\end{figure}
+
+A base de dados \texttt{isi\_store} encontra-se documentada nas Figuras~\ref{fig:bd_tabelas} a \ref{fig:db_ok}: tabelas criadas, conteúdo de \textit{stock}, \texttt{dw\_vendas} vazia antes da carga e conexão testada com sucesso.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{imagens/bd_tabelas.png}
+\caption{Tabelas dw\_vendas e stock na BD isi\_store. Fonte: autor (2026).}
+\label{fig:bd_tabelas}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/bd_stock_conteudo.png}
+\caption{Conteúdo da tabela stock. Fonte: autor (2026).}
+\label{fig:bd_stock}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/bd_dw_vazia.png}
+\caption{Tabela dw\_vendas vazia antes da carga. Fonte: autor (2026).}
+\label{fig:bd_dw}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{imagens/db_connection_ok.png}
+\caption{Conexão PostgreSQL isi\_store testada com sucesso. Fonte: autor (2026).}
+\label{fig:db_ok}
+\end{figure}
+
+\subsection{T\_limpeza.ktr}
+Aplicou-se Sort Rows por \texttt{id\_venda} seguido de Unique Rows, que removeu o duplicado V002 (13 para 12), e Filter Rows com \texttt{quantidade\textgreater0 AND id\_cliente IS NOT NULL}, que removeu V005 e V007 (12 para 10), conforme a Figura~\ref{fig:filter10}. Efetuou-se Replace da data de \texttt{/} para \texttt{-} (V009) e calculou-se \texttt{total\_linha=quantidade*preco\_unit} em Calculator BigNumber com precisão 2, após correção do \textit{locale} (Decimal \texttt{.} sem agrupamento), conforme a Figura~\ref{fig:preview_limpo} com V001 a 1799.98.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/filter_10.png}
+\caption{Filter Rows vendas -- 10 linhas após remover quantidade 0 e id\_cliente null. Fonte: autor (2026).}
+\label{fig:filter10}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_limpo.png}
+\caption{Calculator final vendas -- 10 linhas com total\_linha correto (V001 1799.98). Fonte: autor (2026).}
+\label{fig:preview_limpo}
+\end{figure}
+
+\subsection{T\_clientes.ktr}
+Normalizou-se o telemóvel com Replace por expressão regular \texttt{[\textbackslash s-]} (Figura~\ref{fig:replace_tel}), validaram-se correio eletrónico, telemóvel limpo e NIF em três avaliações Regex em série (Figura~\ref{fig:regex3}) e filtraram-se os triplos Y/Y/Y, restando 2 limpos (C001, C003), conforme a Figura~\ref{fig:clientes_limpos}. Aplicou-se anonimização para conformidade com o RGPD (Figura~\ref{fig:anon}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{imagens/replace_tel.png}
+\caption{Replace telemóvel -- normalização com Regex [\textbackslash s-] (912 345 678 para 912345678). Fonte: autor (2026).}
+\label{fig:replace_tel}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{imagens/regex_3.png}
+\caption{Validação Regex -- 6 clientes com email\_ok, telemovel\_ok e nif\_ok (2 limpos C001/C003). Fonte: autor (2026).}
+\label{fig:regex3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{imagens/clientes_limpos.png}
+\caption{Clientes limpos -- 2 válidos após filtro Y/Y/Y com schema remapeado. Fonte: autor (2026).}
+\label{fig:clientes_limpos}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{imagens/anonimizacao.png}
+\caption{Anonimização RGPD -- nif\_anon ******789 e email\_anon a***@gmail. Fonte: autor (2026).}
+\label{fig:anon}
+\end{figure}
+
+\subsection{T\_joins.ktr}
+Efetuaram-se dois Stream Lookups (sem ordenação prévia, ao contrário do Merge Join): vendas com clientes por \texttt{id\_cliente} (Figura~\ref{fig:join1}) e resultado com produtos por \texttt{id\_produto} (Figura~\ref{fig:joinfinal}). Os nulos em C002/C004/C005 refletem integridade referencial, pois esses clientes foram filtrados como sujos. O canvas completo encontra-se na Figura~\ref{fig:tjoin} e a agregação por cidade na Figura~\ref{fig:groupby}: nulo 429/5, Braga 2072/3 e Porto 948/2 (sem Sort prévio obtinham-se 9 linhas).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.62\textheight,keepaspectratio]{imagens/join_clientes.png}
+\caption{Join 1 Stream Lookup vendas+clientes -- 10 linhas, nulls por integridade referencial. Fonte: autor (2026).}
+\label{fig:join1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth,height=0.62\textheight,keepaspectratio]{imagens/join_final.png}
+\caption{Join final Stream Lookup 2 +produtos -- 10 linhas com nome\_prod e categoria\_prod. Fonte: autor (2026).}
+\label{fig:joinfinal}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/t_join.png}
+\caption{Canvas T\_join completo -- vendas+clientes+produtos, 2 lookups, Sort+Group. Fonte: autor (2026).}
+\label{fig:tjoin}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{imagens/groupby_3.png}
+\caption{Group By cidade\_cliente -- 3 linhas: null 429/5, Braga 2072/3, Porto 948/2. Fonte: autor (2026).}
+\label{fig:groupby}
+\end{figure}
+
+% 5. Jobs
+\section{Jobs}
+O presente capítulo descreve a orquestração do processo. A Secção~5.1 apresenta o \textit{Job} principal, a Secção~5.2 a persistência e exportação e a Secção~5.3 a ferramenta complementar.
+
+\subsection{J\_principal.kjb}
+Implementou-se o \textit{Job} com a sequência START, E\_extracao, T\_joins, L\_carga, FTP\_csv, FTP\_json, Mail e Write to log, conforme a Figura~\ref{fig:job}, com execução integral válida. Utilizaram-se \textit{entries} Transformation para as três transformações, Send Mail para o alerta com os totais 2072/948/429 (Figura~\ref{fig:mail}), FTP Put com um step por ficheiro (limitação da versão 10.2 a um wildcard por step) para servidor local \texttt{127.0.0.1:21} e Write to Log para registo de sucesso.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{imagens/job_ok.png}
+\caption{Job principal -- E, T, L, FTP csv/json, Mail e Write to Log com sucesso. Fonte: autor (2026).}
+\label{fig:job}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/email_ok.png}
+\caption{Correio eletrónico de alerta com totais por cidade. Fonte: autor (2026).}
+\label{fig:mail}
+\end{figure}
+
+\subsection{Persistência e exportação}
+A carga persistiu 10 linhas em \texttt{dw\_vendas} (Figura~\ref{fig:dwcheia}) e gerou \texttt{vendas\_limpas.csv} com delimitador \texttt{;} e \texttt{resumo.json} (Figura~\ref{fig:exports}), ambos transferidos para a pasta \texttt{FTP\_remoto} que simula o servidor remoto.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth,height=0.62\textheight,keepaspectratio]{imagens/dw_cheia.png}
+\caption{Tabela dw\_vendas com 10 linhas e totais corretos (V001 1799.98). Fonte: autor (2026).}
+\label{fig:dwcheia}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/export_files.png}
+\caption{Ficheiros exportados em Dados\_Saida. Fonte: autor (2026).}
+\label{fig:exports}
+\end{figure}
+
+\subsection{Node-RED e painel}
+Como ferramenta complementar configurou-se o \textit{broker} Mosquitto em \texttt{localhost:1883} (Eclipse Mosquitto, 2026). O fluxo de \textit{streaming} publica mensagens \texttt{STREAM-} com P005 no tópico \texttt{isi/vendas} (Figura~\ref{fig:nrflow}) e o painel apresenta os totais e o gráfico de barras por cidade com os valores do \textit{Group By} (Figura~\ref{fig:nrdash}), em \texttt{.../ui} (Node-RED, 2026).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{imagens/nodered_flow.png}
+\caption{Fluxos Node-RED -- streaming isi/vendas e painel. Fonte: autor (2026).}
+\label{fig:nrflow}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{imagens/nodered_dashboard.png}
+\caption{Painel com totais Braga 2072, Porto 948 e nulo 429. Fonte: autor (2026).}
+\label{fig:nrdash}
+\end{figure}
+
+% 6. Vídeo
+\section{Vídeo com demonstração (QR Code)}
+O vídeo com 3 a 5 minutos demonstra a execução do \textit{Job}, os dados de entrada sujos, os resultados limpos, o correio eletrónico e o painel. Disponível em \url{A-PREENCHER-LINK-YOUTUBE} (não listado).
+\begin{center}
+% Descomentar após gerar imagens/qrcode.png a partir do link do vídeo:
+% \includegraphics[width=5cm]{imagens/qrcode.png} \\
+A-PREENCHER-QR-CODE
+\end{center}
+
+% 7. Conclusão
+\section{Conclusão e Trabalhos futuros}
+Concluiu-se que o processo cumpre as três fases obrigatórias do enunciado (Ferreira e Ribeiro, 2026): extração multiformato validada por contagens (13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock), transformação com limpeza, expressões regulares, anonimização, junções e agregação, e carga com orquestração completa incluindo correio eletrónico, FTP e registos. Como limitações registam-se o FTP em servidor local por ausência de DNS externo no laboratório e o painel com valores fixos do \textit{Group By}. Como trabalhos futuros propõem-se persistência em MongoDB, painel em Grafana em tempo real e comparação com Apache Airflow.
+
+% 8. Referências
+\section{Referências}
+\begin{itemize}
+\item Eclipse Mosquitto (2026). \textit{Mosquitto MQTT Broker}. Disponível em \url{https://mosquitto.org/}.
+\item FakeStore (2026). \textit{FakeStore API}. Disponível em \url{https://fakestoreapi.com/}.
+\item Ferreira, L. e Ribeiro, Ó. (2026). \textit{Enunciado do Trabalho Prático I de ISI}. IPCA.
+\item Hitachi Vantara (2026). \textit{Pentaho Data Integration Documentation}. Disponível em \url{https://www.hitachivantara.com/}.
+\item KNIME (2026). \textit{KNIME Analytics Platform}. Disponível em \url{https://www.knime.com/}.
+\item Node-RED (2026). \textit{Node-RED}. Disponível em \url{https://nodered.org/}.
+\item PostgreSQL (2026). \textit{PostgreSQL Documentation}. Disponível em \url{https://www.postgresql.org/}.
+\item Talend (2026). \textit{Talend Open Studio}. Disponível em \url{https://www.talend.com/}.
+\end{itemize}
+
+\appendix
+\section{Contagens de validação}
+Registaram-se as seguintes contagens ao longo do processo: vendas.csv com 13 linhas, clientes.json com 6 objetos, produtos.xml com 158 produtos, tabela stock com 158 linhas, vendas limpas com 10 linhas, clientes válidos com 2 registos, dw\_vendas com 10 linhas e Group By com 3 linhas.
+
+\end{document}

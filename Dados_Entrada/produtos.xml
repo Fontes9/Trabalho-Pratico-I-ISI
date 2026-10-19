@@ -1,0 +1,1108 @@
+<produtos>
+  <produto>
+    <id_produto>P001</id_produto>
+    <nome>Portatil Lenovo 15</nome>
+    <categoria>Informatica</categoria>
+    <preco>899.99</preco>
+    <stock>10</stock>
+  </produto>
+  <produto>
+    <id_produto>P002</id_produto>
+    <nome>Rato Logitech MX</nome>
+    <categoria>Informatica</categoria>
+    <preco>29.90</preco>
+    <stock>3</stock>
+  </produto>
+  <produto>
+    <id_produto>P003</id_produto>
+    <nome>Cadeira Escritorio</nome>
+    <categoria>Mobilia</categoria>
+    <preco>15.50</preco>
+    <stock>50</stock>
+  </produto>
+  <produto>
+    <id_produto>P004</id_produto>
+    <nome>Teclado Mecanico RGB</nome>
+    <categoria>Informatica</categoria>
+    <preco>49.99</preco>
+    <stock>2</stock>
+  </produto>
+  <produto>
+    <id_produto>P005</id_produto>
+    <nome>Monitor LG 27 FullHD</nome>
+    <categoria>Informatica</categoria>
+    <preco>199.99</preco>
+    <stock>8</stock>
+  </produto>
+  <produto>
+    <id_produto>P006</id_produto>
+    <nome>Webcam Logitech C920</nome>
+    <categoria>Informatica</categoria>
+    <preco>79.90</preco>
+    <stock>15</stock>
+  </produto>
+  <produto>
+    <id_produto>P007</id_produto>
+    <nome>Headset HyperX Cloud</nome>
+    <categoria>Informatica</categoria>
+    <preco>99.99</preco>
+    <stock>4</stock>
+  </produto>
+  <produto>
+    <id_produto>P008</id_produto>
+    <nome>Secretaria Regulavel</nome>
+    <categoria>Mobilia</categoria>
+    <preco>249.00</preco>
+    <stock>6</stock>
+  </produto>
+  <produto>
+    <id_produto>P009</id_produto>
+    <nome>Teclado Modelo 100</nome>
+    <categoria>Informatica</categoria>
+    <preco>744.12</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P010</id_produto>
+    <nome>Webcam Modelo 101</nome>
+    <categoria>Informatica</categoria>
+    <preco>679.92</preco>
+    <stock>58</stock>
+  </produto>
+  <produto>
+    <id_produto>P011</id_produto>
+    <nome>Fonte Alimentacao Modelo 102</nome>
+    <categoria>Informatica</categoria>
+    <preco>427.69</preco>
+    <stock>2</stock>
+  </produto>
+  <produto>
+    <id_produto>P012</id_produto>
+    <nome>SSD Modelo 103</nome>
+    <categoria>Informatica</categoria>
+    <preco>510.29</preco>
+    <stock>2</stock>
+  </produto>
+  <produto>
+    <id_produto>P013</id_produto>
+    <nome>Cooler Modelo 104</nome>
+    <categoria>Informatica</categoria>
+    <preco>425.31</preco>
+    <stock>29</stock>
+  </produto>
+  <produto>
+    <id_produto>P014</id_produto>
+    <nome>Teclado Modelo 105</nome>
+    <categoria>Informatica</categoria>
+    <preco>761.21</preco>
+    <stock>11</stock>
+  </produto>
+  <produto>
+    <id_produto>P015</id_produto>
+    <nome>Switch Modelo 106</nome>
+    <categoria>Informatica</categoria>
+    <preco>285.08</preco>
+    <stock>14</stock>
+  </produto>
+  <produto>
+    <id_produto>P016</id_produto>
+    <nome>Estante Modelo 107</nome>
+    <categoria>Mobilia</categoria>
+    <preco>111.18</preco>
+    <stock>25</stock>
+  </produto>
+  <produto>
+    <id_produto>P017</id_produto>
+    <nome>Impressora Modelo 108</nome>
+    <categoria>Informatica</categoria>
+    <preco>607.68</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P018</id_produto>
+    <nome>Microfone Modelo 109</nome>
+    <categoria>Informatica</categoria>
+    <preco>540.86</preco>
+    <stock>60</stock>
+  </produto>
+  <produto>
+    <id_produto>P019</id_produto>
+    <nome>Cooler Modelo 110</nome>
+    <categoria>Informatica</categoria>
+    <preco>300.24</preco>
+    <stock>41</stock>
+  </produto>
+  <produto>
+    <id_produto>P020</id_produto>
+    <nome>Impressora Modelo 111</nome>
+    <categoria>Informatica</categoria>
+    <preco>581.57</preco>
+    <stock>46</stock>
+  </produto>
+  <produto>
+    <id_produto>P021</id_produto>
+    <nome>SSD Modelo 112</nome>
+    <categoria>Informatica</categoria>
+    <preco>775.33</preco>
+    <stock>6</stock>
+  </produto>
+  <produto>
+    <id_produto>P022</id_produto>
+    <nome>Cadeira Modelo 113</nome>
+    <categoria>Mobilia</categoria>
+    <preco>386.31</preco>
+    <stock>30</stock>
+  </produto>
+  <produto>
+    <id_produto>P023</id_produto>
+    <nome>Impressora Modelo 114</nome>
+    <categoria>Informatica</categoria>
+    <preco>171.02</preco>
+    <stock>23</stock>
+  </produto>
+  <produto>
+    <id_produto>P024</id_produto>
+    <nome>Memoria RAM Modelo 115</nome>
+    <categoria>Informatica</categoria>
+    <preco>704.79</preco>
+    <stock>44</stock>
+  </produto>
+  <produto>
+    <id_produto>P025</id_produto>
+    <nome>Caixa PC Modelo 116</nome>
+    <categoria>Informatica</categoria>
+    <preco>638.62</preco>
+    <stock>35</stock>
+  </produto>
+  <produto>
+    <id_produto>P026</id_produto>
+    <nome>Portatil Modelo 117</nome>
+    <categoria>Informatica</categoria>
+    <preco>467.63</preco>
+    <stock>18</stock>
+  </produto>
+  <produto>
+    <id_produto>P027</id_produto>
+    <nome>Gaveteiro Modelo 118</nome>
+    <categoria>Mobilia</categoria>
+    <preco>691.27</preco>
+    <stock>15</stock>
+  </produto>
+  <produto>
+    <id_produto>P028</id_produto>
+    <nome>Rato Modelo 119</nome>
+    <categoria>Informatica</categoria>
+    <preco>236.75</preco>
+    <stock>3</stock>
+  </produto>
+  <produto>
+    <id_produto>P029</id_produto>
+    <nome>Apoio Pes Modelo 120</nome>
+    <categoria>Mobilia</categoria>
+    <preco>275.05</preco>
+    <stock>14</stock>
+  </produto>
+  <produto>
+    <id_produto>P030</id_produto>
+    <nome>Candeeiro LED Modelo 121</nome>
+    <categoria>Mobilia</categoria>
+    <preco>877.59</preco>
+    <stock>21</stock>
+  </produto>
+  <produto>
+    <id_produto>P031</id_produto>
+    <nome>Hub USB Modelo 122</nome>
+    <categoria>Informatica</categoria>
+    <preco>401.67</preco>
+    <stock>59</stock>
+  </produto>
+  <produto>
+    <id_produto>P032</id_produto>
+    <nome>Headset Modelo 123</nome>
+    <categoria>Informatica</categoria>
+    <preco>272.22</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P033</id_produto>
+    <nome>Cooler Modelo 124</nome>
+    <categoria>Informatica</categoria>
+    <preco>270.10</preco>
+    <stock>38</stock>
+  </produto>
+  <produto>
+    <id_produto>P034</id_produto>
+    <nome>Fonte Alimentacao Modelo 125</nome>
+    <categoria>Informatica</categoria>
+    <preco>405.40</preco>
+    <stock>15</stock>
+  </produto>
+  <produto>
+    <id_produto>P035</id_produto>
+    <nome>Secretaria Modelo 126</nome>
+    <categoria>Mobilia</categoria>
+    <preco>514.42</preco>
+    <stock>6</stock>
+  </produto>
+  <produto>
+    <id_produto>P036</id_produto>
+    <nome>Webcam Modelo 127</nome>
+    <categoria>Informatica</categoria>
+    <preco>161.30</preco>
+    <stock>11</stock>
+  </produto>
+  <produto>
+    <id_produto>P037</id_produto>
+    <nome>Colunas Modelo 128</nome>
+    <categoria>Informatica</categoria>
+    <preco>600.43</preco>
+    <stock>25</stock>
+  </produto>
+  <produto>
+    <id_produto>P038</id_produto>
+    <nome>Microfone Modelo 129</nome>
+    <categoria>Informatica</categoria>
+    <preco>533.81</preco>
+    <stock>36</stock>
+  </produto>
+  <produto>
+    <id_produto>P039</id_produto>
+    <nome>Cadeira Modelo 130</nome>
+    <categoria>Mobilia</categoria>
+    <preco>683.47</preco>
+    <stock>8</stock>
+  </produto>
+  <produto>
+    <id_produto>P040</id_produto>
+    <nome>Cooler Modelo 131</nome>
+    <categoria>Informatica</categoria>
+    <preco>753.36</preco>
+    <stock>50</stock>
+  </produto>
+  <produto>
+    <id_produto>P041</id_produto>
+    <nome>Webcam Modelo 132</nome>
+    <categoria>Informatica</categoria>
+    <preco>300.56</preco>
+    <stock>11</stock>
+  </produto>
+  <produto>
+    <id_produto>P042</id_produto>
+    <nome>Memoria RAM Modelo 133</nome>
+    <categoria>Informatica</categoria>
+    <preco>972.16</preco>
+    <stock>49</stock>
+  </produto>
+  <produto>
+    <id_produto>P043</id_produto>
+    <nome>Webcam Modelo 134</nome>
+    <categoria>Informatica</categoria>
+    <preco>871.80</preco>
+    <stock>20</stock>
+  </produto>
+  <produto>
+    <id_produto>P044</id_produto>
+    <nome>Candeeiro LED Modelo 135</nome>
+    <categoria>Mobilia</categoria>
+    <preco>612.87</preco>
+    <stock>10</stock>
+  </produto>
+  <produto>
+    <id_produto>P045</id_produto>
+    <nome>Portatil Modelo 136</nome>
+    <categoria>Informatica</categoria>
+    <preco>543.98</preco>
+    <stock>50</stock>
+  </produto>
+  <produto>
+    <id_produto>P046</id_produto>
+    <nome>Cadeira Modelo 137</nome>
+    <categoria>Mobilia</categoria>
+    <preco>602.95</preco>
+    <stock>32</stock>
+  </produto>
+  <produto>
+    <id_produto>P047</id_produto>
+    <nome>Impressora Modelo 138</nome>
+    <categoria>Informatica</categoria>
+    <preco>879.92</preco>
+    <stock>54</stock>
+  </produto>
+  <produto>
+    <id_produto>P048</id_produto>
+    <nome>Secretaria Modelo 139</nome>
+    <categoria>Mobilia</categoria>
+    <preco>67.34</preco>
+    <stock>57</stock>
+  </produto>
+  <produto>
+    <id_produto>P049</id_produto>
+    <nome>Monitor Modelo 140</nome>
+    <categoria>Informatica</categoria>
+    <preco>94.79</preco>
+    <stock>32</stock>
+  </produto>
+  <produto>
+    <id_produto>P050</id_produto>
+    <nome>Candeeiro LED Modelo 141</nome>
+    <categoria>Mobilia</categoria>
+    <preco>768.17</preco>
+    <stock>9</stock>
+  </produto>
+  <produto>
+    <id_produto>P051</id_produto>
+    <nome>Cooler Modelo 142</nome>
+    <categoria>Informatica</categoria>
+    <preco>173.47</preco>
+    <stock>34</stock>
+  </produto>
+  <produto>
+    <id_produto>P052</id_produto>
+    <nome>Apoio Pes Modelo 143</nome>
+    <categoria>Mobilia</categoria>
+    <preco>964.71</preco>
+    <stock>60</stock>
+  </produto>
+  <produto>
+    <id_produto>P053</id_produto>
+    <nome>Placa Grafica Modelo 144</nome>
+    <categoria>Informatica</categoria>
+    <preco>715.81</preco>
+    <stock>26</stock>
+  </produto>
+  <produto>
+    <id_produto>P054</id_produto>
+    <nome>Gaveteiro Modelo 145</nome>
+    <categoria>Mobilia</categoria>
+    <preco>379.68</preco>
+    <stock>58</stock>
+  </produto>
+  <produto>
+    <id_produto>P055</id_produto>
+    <nome>Webcam Modelo 146</nome>
+    <categoria>Informatica</categoria>
+    <preco>255.42</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P056</id_produto>
+    <nome>Fonte Alimentacao Modelo 147</nome>
+    <categoria>Informatica</categoria>
+    <preco>558.37</preco>
+    <stock>38</stock>
+  </produto>
+  <produto>
+    <id_produto>P057</id_produto>
+    <nome>Monitor Modelo 148</nome>
+    <categoria>Informatica</categoria>
+    <preco>710.75</preco>
+    <stock>4</stock>
+  </produto>
+  <produto>
+    <id_produto>P058</id_produto>
+    <nome>Rato Modelo 149</nome>
+    <categoria>Informatica</categoria>
+    <preco>861.03</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P059</id_produto>
+    <nome>Memoria RAM Modelo 150</nome>
+    <categoria>Informatica</categoria>
+    <preco>672.28</preco>
+    <stock>14</stock>
+  </produto>
+  <produto>
+    <id_produto>P060</id_produto>
+    <nome>Fonte Alimentacao Modelo 151</nome>
+    <categoria>Informatica</categoria>
+    <preco>580.44</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P061</id_produto>
+    <nome>Colunas Modelo 152</nome>
+    <categoria>Informatica</categoria>
+    <preco>198.50</preco>
+    <stock>7</stock>
+  </produto>
+  <produto>
+    <id_produto>P062</id_produto>
+    <nome>Impressora Modelo 153</nome>
+    <categoria>Informatica</categoria>
+    <preco>429.33</preco>
+    <stock>30</stock>
+  </produto>
+  <produto>
+    <id_produto>P063</id_produto>
+    <nome>Cadeira Modelo 154</nome>
+    <categoria>Mobilia</categoria>
+    <preco>676.62</preco>
+    <stock>42</stock>
+  </produto>
+  <produto>
+    <id_produto>P064</id_produto>
+    <nome>Scanner Modelo 155</nome>
+    <categoria>Informatica</categoria>
+    <preco>730.92</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P065</id_produto>
+    <nome>Secretaria Modelo 156</nome>
+    <categoria>Mobilia</categoria>
+    <preco>199.66</preco>
+    <stock>35</stock>
+  </produto>
+  <produto>
+    <id_produto>P066</id_produto>
+    <nome>Colunas Modelo 157</nome>
+    <categoria>Informatica</categoria>
+    <preco>191.64</preco>
+    <stock>30</stock>
+  </produto>
+  <produto>
+    <id_produto>P067</id_produto>
+    <nome>Monitor Modelo 158</nome>
+    <categoria>Informatica</categoria>
+    <preco>448.69</preco>
+    <stock>56</stock>
+  </produto>
+  <produto>
+    <id_produto>P068</id_produto>
+    <nome>Cadeira Modelo 159</nome>
+    <categoria>Mobilia</categoria>
+    <preco>60.07</preco>
+    <stock>35</stock>
+  </produto>
+  <produto>
+    <id_produto>P069</id_produto>
+    <nome>Cadeira Modelo 160</nome>
+    <categoria>Mobilia</categoria>
+    <preco>927.09</preco>
+    <stock>55</stock>
+  </produto>
+  <produto>
+    <id_produto>P070</id_produto>
+    <nome>Colunas Modelo 161</nome>
+    <categoria>Informatica</categoria>
+    <preco>490.77</preco>
+    <stock>14</stock>
+  </produto>
+  <produto>
+    <id_produto>P071</id_produto>
+    <nome>Cadeira Modelo 162</nome>
+    <categoria>Mobilia</categoria>
+    <preco>172.98</preco>
+    <stock>1</stock>
+  </produto>
+  <produto>
+    <id_produto>P072</id_produto>
+    <nome>Estante Modelo 163</nome>
+    <categoria>Mobilia</categoria>
+    <preco>927.24</preco>
+    <stock>51</stock>
+  </produto>
+  <produto>
+    <id_produto>P073</id_produto>
+    <nome>Colunas Modelo 164</nome>
+    <categoria>Informatica</categoria>
+    <preco>699.62</preco>
+    <stock>47</stock>
+  </produto>
+  <produto>
+    <id_produto>P074</id_produto>
+    <nome>Candeeiro LED Modelo 165</nome>
+    <categoria>Mobilia</categoria>
+    <preco>665.24</preco>
+    <stock>32</stock>
+  </produto>
+  <produto>
+    <id_produto>P075</id_produto>
+    <nome>Router Modelo 166</nome>
+    <categoria>Informatica</categoria>
+    <preco>225.51</preco>
+    <stock>4</stock>
+  </produto>
+  <produto>
+    <id_produto>P076</id_produto>
+    <nome>Cooler Modelo 167</nome>
+    <categoria>Informatica</categoria>
+    <preco>70.34</preco>
+    <stock>21</stock>
+  </produto>
+  <produto>
+    <id_produto>P077</id_produto>
+    <nome>Fonte Alimentacao Modelo 168</nome>
+    <categoria>Informatica</categoria>
+    <preco>482.01</preco>
+    <stock>59</stock>
+  </produto>
+  <produto>
+    <id_produto>P078</id_produto>
+    <nome>Secretaria Modelo 169</nome>
+    <categoria>Mobilia</categoria>
+    <preco>66.30</preco>
+    <stock>33</stock>
+  </produto>
+  <produto>
+    <id_produto>P079</id_produto>
+    <nome>Portatil Modelo 170</nome>
+    <categoria>Informatica</categoria>
+    <preco>77.83</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P080</id_produto>
+    <nome>SSD Modelo 171</nome>
+    <categoria>Informatica</categoria>
+    <preco>409.73</preco>
+    <stock>57</stock>
+  </produto>
+  <produto>
+    <id_produto>P081</id_produto>
+    <nome>Fonte Alimentacao Modelo 172</nome>
+    <categoria>Informatica</categoria>
+    <preco>598.56</preco>
+    <stock>40</stock>
+  </produto>
+  <produto>
+    <id_produto>P082</id_produto>
+    <nome>Fonte Alimentacao Modelo 173</nome>
+    <categoria>Informatica</categoria>
+    <preco>569.56</preco>
+    <stock>21</stock>
+  </produto>
+  <produto>
+    <id_produto>P083</id_produto>
+    <nome>Secretaria Modelo 174</nome>
+    <categoria>Mobilia</categoria>
+    <preco>673.02</preco>
+    <stock>21</stock>
+  </produto>
+  <produto>
+    <id_produto>P084</id_produto>
+    <nome>Scanner Modelo 175</nome>
+    <categoria>Informatica</categoria>
+    <preco>139.56</preco>
+    <stock>42</stock>
+  </produto>
+  <produto>
+    <id_produto>P085</id_produto>
+    <nome>Switch Modelo 176</nome>
+    <categoria>Informatica</categoria>
+    <preco>929.72</preco>
+    <stock>60</stock>
+  </produto>
+  <produto>
+    <id_produto>P086</id_produto>
+    <nome>Microfone Modelo 177</nome>
+    <categoria>Informatica</categoria>
+    <preco>624.94</preco>
+    <stock>37</stock>
+  </produto>
+  <produto>
+    <id_produto>P087</id_produto>
+    <nome>Cadeira Modelo 178</nome>
+    <categoria>Mobilia</categoria>
+    <preco>542.25</preco>
+    <stock>33</stock>
+  </produto>
+  <produto>
+    <id_produto>P088</id_produto>
+    <nome>Impressora Modelo 179</nome>
+    <categoria>Informatica</categoria>
+    <preco>882.05</preco>
+    <stock>57</stock>
+  </produto>
+  <produto>
+    <id_produto>P089</id_produto>
+    <nome>Router Modelo 180</nome>
+    <categoria>Informatica</categoria>
+    <preco>166.16</preco>
+    <stock>54</stock>
+  </produto>
+  <produto>
+    <id_produto>P090</id_produto>
+    <nome>Router Modelo 181</nome>
+    <categoria>Informatica</categoria>
+    <preco>615.55</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P091</id_produto>
+    <nome>Teclado Modelo 182</nome>
+    <categoria>Informatica</categoria>
+    <preco>671.17</preco>
+    <stock>36</stock>
+  </produto>
+  <produto>
+    <id_produto>P092</id_produto>
+    <nome>Webcam Modelo 183</nome>
+    <categoria>Informatica</categoria>
+    <preco>939.53</preco>
+    <stock>9</stock>
+  </produto>
+  <produto>
+    <id_produto>P093</id_produto>
+    <nome>Webcam Modelo 184</nome>
+    <categoria>Informatica</categoria>
+    <preco>744.98</preco>
+    <stock>10</stock>
+  </produto>
+  <produto>
+    <id_produto>P094</id_produto>
+    <nome>Caixa PC Modelo 185</nome>
+    <categoria>Informatica</categoria>
+    <preco>218.51</preco>
+    <stock>22</stock>
+  </produto>
+  <produto>
+    <id_produto>P095</id_produto>
+    <nome>Memoria RAM Modelo 186</nome>
+    <categoria>Informatica</categoria>
+    <preco>510.34</preco>
+    <stock>17</stock>
+  </produto>
+  <produto>
+    <id_produto>P096</id_produto>
+    <nome>Cadeira Modelo 187</nome>
+    <categoria>Mobilia</categoria>
+    <preco>101.37</preco>
+    <stock>28</stock>
+  </produto>
+  <produto>
+    <id_produto>P097</id_produto>
+    <nome>Cadeira Modelo 188</nome>
+    <categoria>Mobilia</categoria>
+    <preco>13.50</preco>
+    <stock>50</stock>
+  </produto>
+  <produto>
+    <id_produto>P098</id_produto>
+    <nome>Memoria RAM Modelo 189</nome>
+    <categoria>Informatica</categoria>
+    <preco>169.96</preco>
+    <stock>29</stock>
+  </produto>
+  <produto>
+    <id_produto>P099</id_produto>
+    <nome>Colunas Modelo 190</nome>
+    <categoria>Informatica</categoria>
+    <preco>565.29</preco>
+    <stock>8</stock>
+  </produto>
+  <produto>
+    <id_produto>P100</id_produto>
+    <nome>Headset Modelo 191</nome>
+    <categoria>Informatica</categoria>
+    <preco>550.12</preco>
+    <stock>54</stock>
+  </produto>
+  <produto>
+    <id_produto>P101</id_produto>
+    <nome>Cooler Modelo 192</nome>
+    <categoria>Informatica</categoria>
+    <preco>156.60</preco>
+    <stock>9</stock>
+  </produto>
+  <produto>
+    <id_produto>P102</id_produto>
+    <nome>Impressora Modelo 193</nome>
+    <categoria>Informatica</categoria>
+    <preco>899.98</preco>
+    <stock>51</stock>
+  </produto>
+  <produto>
+    <id_produto>P103</id_produto>
+    <nome>Cadeira Modelo 194</nome>
+    <categoria>Mobilia</categoria>
+    <preco>899.93</preco>
+    <stock>14</stock>
+  </produto>
+  <produto>
+    <id_produto>P104</id_produto>
+    <nome>Webcam Modelo 195</nome>
+    <categoria>Informatica</categoria>
+    <preco>360.13</preco>
+    <stock>36</stock>
+  </produto>
+  <produto>
+    <id_produto>P105</id_produto>
+    <nome>Apoio Pes Modelo 196</nome>
+    <categoria>Mobilia</categoria>
+    <preco>974.09</preco>
+    <stock>48</stock>
+  </produto>
+  <produto>
+    <id_produto>P106</id_produto>
+    <nome>SSD Modelo 197</nome>
+    <categoria>Informatica</categoria>
+    <preco>865.95</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P107</id_produto>
+    <nome>Apoio Pes Modelo 198</nome>
+    <categoria>Mobilia</categoria>
+    <preco>34.53</preco>
+    <stock>48</stock>
+  </produto>
+  <produto>
+    <id_produto>P108</id_produto>
+    <nome>Apoio Pes Modelo 199</nome>
+    <categoria>Mobilia</categoria>
+    <preco>804.20</preco>
+    <stock>56</stock>
+  </produto>
+  <produto>
+    <id_produto>P109</id_produto>
+    <nome>SSD Modelo 200</nome>
+    <categoria>Informatica</categoria>
+    <preco>274.13</preco>
+    <stock>51</stock>
+  </produto>
+  <produto>
+    <id_produto>P110</id_produto>
+    <nome>Scanner Modelo 201</nome>
+    <categoria>Informatica</categoria>
+    <preco>873.44</preco>
+    <stock>55</stock>
+  </produto>
+  <produto>
+    <id_produto>P111</id_produto>
+    <nome>Placa Grafica Modelo 202</nome>
+    <categoria>Informatica</categoria>
+    <preco>818.41</preco>
+    <stock>30</stock>
+  </produto>
+  <produto>
+    <id_produto>P112</id_produto>
+    <nome>SSD Modelo 203</nome>
+    <categoria>Informatica</categoria>
+    <preco>230.68</preco>
+    <stock>43</stock>
+  </produto>
+  <produto>
+    <id_produto>P113</id_produto>
+    <nome>Switch Modelo 204</nome>
+    <categoria>Informatica</categoria>
+    <preco>285.81</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P114</id_produto>
+    <nome>Estante Modelo 205</nome>
+    <categoria>Mobilia</categoria>
+    <preco>357.62</preco>
+    <stock>33</stock>
+  </produto>
+  <produto>
+    <id_produto>P115</id_produto>
+    <nome>Cooler Modelo 206</nome>
+    <categoria>Informatica</categoria>
+    <preco>337.83</preco>
+    <stock>2</stock>
+  </produto>
+  <produto>
+    <id_produto>P116</id_produto>
+    <nome>Memoria RAM Modelo 207</nome>
+    <categoria>Informatica</categoria>
+    <preco>186.77</preco>
+    <stock>17</stock>
+  </produto>
+  <produto>
+    <id_produto>P117</id_produto>
+    <nome>Caixa PC Modelo 208</nome>
+    <categoria>Informatica</categoria>
+    <preco>440.21</preco>
+    <stock>47</stock>
+  </produto>
+  <produto>
+    <id_produto>P118</id_produto>
+    <nome>Colunas Modelo 209</nome>
+    <categoria>Informatica</categoria>
+    <preco>610.14</preco>
+    <stock>33</stock>
+  </produto>
+  <produto>
+    <id_produto>P119</id_produto>
+    <nome>Fonte Alimentacao Modelo 210</nome>
+    <categoria>Informatica</categoria>
+    <preco>198.17</preco>
+    <stock>3</stock>
+  </produto>
+  <produto>
+    <id_produto>P120</id_produto>
+    <nome>Teclado Modelo 211</nome>
+    <categoria>Informatica</categoria>
+    <preco>524.71</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P121</id_produto>
+    <nome>Placa Grafica Modelo 212</nome>
+    <categoria>Informatica</categoria>
+    <preco>370.57</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P122</id_produto>
+    <nome>Estante Modelo 213</nome>
+    <categoria>Mobilia</categoria>
+    <preco>626.91</preco>
+    <stock>43</stock>
+  </produto>
+  <produto>
+    <id_produto>P123</id_produto>
+    <nome>Gaveteiro Modelo 214</nome>
+    <categoria>Mobilia</categoria>
+    <preco>901.04</preco>
+    <stock>33</stock>
+  </produto>
+  <produto>
+    <id_produto>P124</id_produto>
+    <nome>Colunas Modelo 215</nome>
+    <categoria>Informatica</categoria>
+    <preco>332.91</preco>
+    <stock>45</stock>
+  </produto>
+  <produto>
+    <id_produto>P125</id_produto>
+    <nome>Headset Modelo 216</nome>
+    <categoria>Informatica</categoria>
+    <preco>199.91</preco>
+    <stock>43</stock>
+  </produto>
+  <produto>
+    <id_produto>P126</id_produto>
+    <nome>Gaveteiro Modelo 217</nome>
+    <categoria>Mobilia</categoria>
+    <preco>750.64</preco>
+    <stock>12</stock>
+  </produto>
+  <produto>
+    <id_produto>P127</id_produto>
+    <nome>Router Modelo 218</nome>
+    <categoria>Informatica</categoria>
+    <preco>412.00</preco>
+    <stock>54</stock>
+  </produto>
+  <produto>
+    <id_produto>P128</id_produto>
+    <nome>Router Modelo 219</nome>
+    <categoria>Informatica</categoria>
+    <preco>218.07</preco>
+    <stock>51</stock>
+  </produto>
+  <produto>
+    <id_produto>P129</id_produto>
+    <nome>Switch Modelo 220</nome>
+    <categoria>Informatica</categoria>
+    <preco>470.33</preco>
+    <stock>29</stock>
+  </produto>
+  <produto>
+    <id_produto>P130</id_produto>
+    <nome>Dock Station Modelo 221</nome>
+    <categoria>Informatica</categoria>
+    <preco>478.44</preco>
+    <stock>58</stock>
+  </produto>
+  <produto>
+    <id_produto>P131</id_produto>
+    <nome>Gaveteiro Modelo 222</nome>
+    <categoria>Mobilia</categoria>
+    <preco>177.98</preco>
+    <stock>6</stock>
+  </produto>
+  <produto>
+    <id_produto>P132</id_produto>
+    <nome>Caixa PC Modelo 223</nome>
+    <categoria>Informatica</categoria>
+    <preco>341.83</preco>
+    <stock>53</stock>
+  </produto>
+  <produto>
+    <id_produto>P133</id_produto>
+    <nome>Secretaria Modelo 224</nome>
+    <categoria>Mobilia</categoria>
+    <preco>676.06</preco>
+    <stock>15</stock>
+  </produto>
+  <produto>
+    <id_produto>P134</id_produto>
+    <nome>Secretaria Modelo 225</nome>
+    <categoria>Mobilia</categoria>
+    <preco>34.17</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P135</id_produto>
+    <nome>Candeeiro LED Modelo 226</nome>
+    <categoria>Mobilia</categoria>
+    <preco>851.23</preco>
+    <stock>5</stock>
+  </produto>
+  <produto>
+    <id_produto>P136</id_produto>
+    <nome>Fonte Alimentacao Modelo 227</nome>
+    <categoria>Informatica</categoria>
+    <preco>202.48</preco>
+    <stock>45</stock>
+  </produto>
+  <produto>
+    <id_produto>P137</id_produto>
+    <nome>Scanner Modelo 228</nome>
+    <categoria>Informatica</categoria>
+    <preco>251.53</preco>
+    <stock>42</stock>
+  </produto>
+  <produto>
+    <id_produto>P138</id_produto>
+    <nome>Webcam Modelo 229</nome>
+    <categoria>Informatica</categoria>
+    <preco>780.63</preco>
+    <stock>15</stock>
+  </produto>
+  <produto>
+    <id_produto>P139</id_produto>
+    <nome>Dock Station Modelo 230</nome>
+    <categoria>Informatica</categoria>
+    <preco>469.89</preco>
+    <stock>36</stock>
+  </produto>
+  <produto>
+    <id_produto>P140</id_produto>
+    <nome>Webcam Modelo 231</nome>
+    <categoria>Informatica</categoria>
+    <preco>461.89</preco>
+    <stock>52</stock>
+  </produto>
+  <produto>
+    <id_produto>P141</id_produto>
+    <nome>Dock Station Modelo 232</nome>
+    <categoria>Informatica</categoria>
+    <preco>988.00</preco>
+    <stock>39</stock>
+  </produto>
+  <produto>
+    <id_produto>P142</id_produto>
+    <nome>Microfone Modelo 233</nome>
+    <categoria>Informatica</categoria>
+    <preco>616.52</preco>
+    <stock>47</stock>
+  </produto>
+  <produto>
+    <id_produto>P143</id_produto>
+    <nome>Apoio Pes Modelo 234</nome>
+    <categoria>Mobilia</categoria>
+    <preco>832.25</preco>
+    <stock>36</stock>
+  </produto>
+  <produto>
+    <id_produto>P144</id_produto>
+    <nome>Portatil Modelo 235</nome>
+    <categoria>Informatica</categoria>
+    <preco>746.21</preco>
+    <stock>31</stock>
+  </produto>
+  <produto>
+    <id_produto>P145</id_produto>
+    <nome>SSD Modelo 236</nome>
+    <categoria>Informatica</categoria>
+    <preco>841.45</preco>
+    <stock>18</stock>
+  </produto>
+  <produto>
+    <id_produto>P146</id_produto>
+    <nome>Dock Station Modelo 237</nome>
+    <categoria>Informatica</categoria>
+    <preco>489.74</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P147</id_produto>
+    <nome>Monitor Modelo 238</nome>
+    <categoria>Informatica</categoria>
+    <preco>716.40</preco>
+    <stock>16</stock>
+  </produto>
+  <produto>
+    <id_produto>P148</id_produto>
+    <nome>Switch Modelo 239</nome>
+    <categoria>Informatica</categoria>
+    <preco>894.09</preco>
+    <stock>6</stock>
+  </produto>
+  <produto>
+    <id_produto>P149</id_produto>
+    <nome>SSD Modelo 240</nome>
+    <categoria>Informatica</categoria>
+    <preco>389.19</preco>
+    <stock>10</stock>
+  </produto>
+  <produto>
+    <id_produto>P150</id_produto>
+    <nome>Monitor Modelo 241</nome>
+    <categoria>Informatica</categoria>
+    <preco>420.71</preco>
+    <stock>22</stock>
+  </produto>
+  <produto>
+    <id_produto>P151</id_produto>
+    <nome>Colunas Modelo 242</nome>
+    <categoria>Informatica</categoria>
+    <preco>71.63</preco>
+    <stock>54</stock>
+  </produto>
+  <produto>
+    <id_produto>P152</id_produto>
+    <nome>Fonte Alimentacao Modelo 243</nome>
+    <categoria>Informatica</categoria>
+    <preco>946.59</preco>
+    <stock>2</stock>
+  </produto>
+  <produto>
+    <id_produto>P153</id_produto>
+    <nome>Candeeiro LED Modelo 244</nome>
+    <categoria>Mobilia</categoria>
+    <preco>386.57</preco>
+    <stock>1</stock>
+  </produto>
+  <produto>
+    <id_produto>P154</id_produto>
+    <nome>Estante Modelo 245</nome>
+    <categoria>Mobilia</categoria>
+    <preco>755.93</preco>
+    <stock>55</stock>
+  </produto>
+  <produto>
+    <id_produto>P155</id_produto>
+    <nome>Apoio Pes Modelo 246</nome>
+    <categoria>Mobilia</categoria>
+    <preco>542.83</preco>
+    <stock>48</stock>
+  </produto>
+  <produto>
+    <id_produto>P156</id_produto>
+    <nome>Caixa PC Modelo 247</nome>
+    <categoria>Informatica</categoria>
+    <preco>898.82</preco>
+    <stock>32</stock>
+  </produto>
+  <produto>
+    <id_produto>P157</id_produto>
+    <nome>Colunas Modelo 248</nome>
+    <categoria>Informatica</categoria>
+    <preco>490.78</preco>
+    <stock>25</stock>
+  </produto>
+  <produto>
+    <id_produto>P158</id_produto>
+    <nome>Scanner Modelo 249</nome>
+    <categoria>Informatica</categoria>
+    <preco>726.93</preco>
+    <stock>54</stock>
+  </produto>
+</produtos>

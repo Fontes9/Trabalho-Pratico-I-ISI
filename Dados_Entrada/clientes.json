@@ -1,0 +1,8 @@
+[
+  {"id_cliente": "C001", "nome": "ana silva", "email": "ana.silva@gmail.com", "telemovel": "912 345 678", "nif": "123456789", "cidade": "Braga"},
+  {"id_cliente": "C002", "nome": "JOAO PEREIRA", "email": "joao.pereira@mail", "telemovel": "913-456-789", "nif": "987654321", "cidade": "Guimaraes"},
+  {"id_cliente": "C003", "nome": "Maria Costa", "email": "maria.costa@hotmail.com", "telemovel": "914456789", "nif": "456789123", "cidade": "Porto"},
+  {"id_cliente": "C004", "nome": "Pedro  Santos", "email": null, "telemovel": "915 456 789", "nif": "321654987", "cidade": "Braga"},
+  {"id_cliente": "C005", "nome": "Ines Rocha", "email": "ines.rocha@gmail.com", "telemovel": "91645678", "nif": "ABC123", "cidade": "Lisboa"},
+  {"id_cliente": "C002", "nome": "JOAO PEREIRA", "email": "joao.pereira@mail", "telemovel": "913-456-789", "nif": "987654321", "cidade": "Guimaraes"}
+]
