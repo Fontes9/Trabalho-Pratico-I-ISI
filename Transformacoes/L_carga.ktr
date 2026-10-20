@@ -598,7 +598,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Entrada\vendas.csv</filename>
+    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\vendas.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -896,7 +896,7 @@
     <encoding>UTF-8</encoding>
     <addtoresult>N</addtoresult>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Saida\resumo</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida\resumo</name>
       <extention>json</extention>
       <append>N</append>
       <split>N</split>
@@ -1457,7 +1457,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Saida\vendas_limpas</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida\vendas_limpas</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -1680,7 +1680,7 @@
     <includeNulls>N</includeNulls>
     <rownum_field/>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Entrada\clientes.json</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\clientes.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1817,7 +1817,7 @@
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Entrada\produtos.xml</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\produtos.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>

@@ -293,7 +293,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Transformacoes\E_extracao.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\E_extracao.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -332,7 +332,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Transformacoes\T_joins.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\T_joins.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -360,7 +360,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
+      <xloc>192</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -371,7 +371,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Transformacoes\L_carga.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\L_carga.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -399,7 +399,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>304</xloc>
+      <xloc>272</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -421,7 +421,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>16</xloc>
+      <xloc>32</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -441,7 +441,21 @@
       <include_date>N</include_date>
       <contact_person/>
       <contact_phone/>
-      <comment>Carga dw_vendas 10 linhas. Braga 2072 (3 vendas), Porto 948 (2 vendas), sem cliente 429 (5 vendas).</comment>
+      <comment>&lt;table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
+  &lt;tr>
+    &lt;th align="left">Cidade&lt;/th>
+    &lt;th>Vendas&lt;/th>
+    &lt;th>Total (€)&lt;/th>
+    &lt;th>Ticket médio (€)&lt;/th>
+    &lt;th>% do total&lt;/th>
+  &lt;/tr>
+  &lt;tr>&lt;td>Braga&lt;/td>&lt;td align="right">3&lt;/td>&lt;td align="right">2077.47&lt;/td>&lt;td align="right">692.49&lt;/td>&lt;td align="right">60.0%&lt;/td>&lt;/tr>
+  &lt;tr>&lt;td>Porto&lt;/td>&lt;td align="right">2&lt;/td>&lt;td align="right">949.98&lt;/td>&lt;td align="right">474.99&lt;/td>&lt;td align="right">27.4%&lt;/td>&lt;/tr>
+  &lt;tr>&lt;td>Sem cliente&lt;/td>&lt;td align="right">5&lt;/td>&lt;td align="right">436.17&lt;/td>&lt;td align="right">87.23&lt;/td>&lt;td align="right">12.6%&lt;/td>&lt;/tr>
+  &lt;tr style="font-weight:bold">
+    &lt;td>Total&lt;/td>&lt;td align="right">10&lt;/td>&lt;td align="right">3463.62&lt;/td>&lt;td align="right">346.36&lt;/td>&lt;td align="right">100%&lt;/td>
+  &lt;/tr>
+&lt;/table></comment>
       <include_files>N</include_files>
       <zip_files>N</zip_files>
       <zip_name/>
@@ -449,8 +463,8 @@
       <use_secure_auth>Y</use_secure_auth>
       <auth_user>a33222@alunos.ipca.pt</auth_user>
       <auth_password>Encrypted 2be98afc86aa7b58bb91cba7587caff9c</auth_password>
-      <only_comment>N</only_comment>
-      <use_HTML>N</use_HTML>
+      <only_comment>Y</only_comment>
+      <use_HTML>Y</use_HTML>
       <use_Priority>N</use_Priority>
       <encoding>UTF-8</encoding>
       <priority>normal</priority>
@@ -464,7 +478,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
+      <xloc>592</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -478,7 +492,7 @@
       <username>isi</username>
       <password>Encrypted 2be98afc86aa7f2e4cb79a763d7c3fd89</password>
       <remoteDirectory>/</remoteDirectory>
-      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Saida</localDirectory>
+      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida</localDirectory>
       <wildcard>vendas_limpas.csv</wildcard>
       <binary>Y</binary>
       <timeout>0</timeout>
@@ -497,7 +511,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>416</xloc>
+      <xloc>432</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -511,7 +525,7 @@
       <username>isi</username>
       <password>Encrypted 2be98afc86aa7f2e4cb79a763d7c3fd89</password>
       <remoteDirectory>/</remoteDirectory>
-      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Saida</localDirectory>
+      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida</localDirectory>
       <wildcard>resumo.json</wildcard>
       <binary>Y</binary>
       <timeout>0</timeout>
@@ -540,12 +554,51 @@
       <type>WRITE_TO_LOG</type>
       <attributes/>
       <logmessage/>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <logsubject/>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>688</xloc>
+      <xloc>672</xloc>
+      <yloc>112</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>T_conversao</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\T_conversao.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>352</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -579,24 +632,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>L_carga</from>
-      <to>FTP_csv</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>FTP_csv</from>
-      <to>FTP_json</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>FTP_json</from>
       <to>Mail</to>
       <from_nr>0</from_nr>
@@ -608,6 +643,33 @@
     <hop>
       <from>Mail</from>
       <to>Write to log</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>L_carga</from>
+      <to>T_conversao</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>T_conversao</from>
+      <to>FTP_csv</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>FTP_csv</from>
+      <to>FTP_json</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

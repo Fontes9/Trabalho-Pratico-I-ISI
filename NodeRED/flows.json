@@ -1,217 +1,177 @@
 [
     {
-        "id": "5c48f299418418bf",
+        "id": "892c4c03051c31fd",
         "type": "tab",
         "label": "ISI Store"
     },
     {
-        "id": "df1737966336b7a1",
-        "type": "inject",
-        "z": "5c48f299418418bf",
-        "name": "inject 10s",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "10",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 80,
-        "wires": [
-            [
-                "a3564fa0d86e469e"
-            ]
-        ]
+        "id": "9ed5491dac208cab",
+        "type": "ui_tab",
+        "name": "ISI Store",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
-        "id": "a3564fa0d86e469e",
-        "type": "function",
-        "z": "5c48f299418418bf",
-        "name": "vendas",
-        "func": "msg.topic=\"isi/vendas\";\nlet q=1+Math.floor(Math.random()*3);\nmsg.payload={id_venda:\"STREAM-\"+Date.now(),id_produto:\"P005\",quantidade:q,preco_unit:199.99,total_linha:+(q*199.99).toFixed(2)};\nreturn msg;",
-        "outputs": 1,
-        "x": 300,
-        "y": 80,
-        "wires": [
-            [
-                "7e382bf3e4f28f6f",
-                "842c267a7bef0936"
-            ]
-        ]
-    },
-    {
-        "id": "7e382bf3e4f28f6f",
-        "type": "mqtt out",
-        "z": "5c48f299418418bf",
-        "topic": "isi/vendas",
-        "qos": "0",
-        "retain": "false",
-        "broker": "665f20ed9075d114",
-        "x": 500,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "842c267a7bef0936",
-        "type": "debug",
-        "z": "5c48f299418418bf",
-        "tosidebar": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 130,
-        "wires": []
-    },
-    {
-        "id": "0cfcaf860049408b",
-        "type": "inject",
-        "z": "5c48f299418418bf",
-        "name": "test",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 240,
-        "wires": [
-            [
-                "c93659b814bd1cb5"
-            ]
-        ]
-    },
-    {
-        "id": "c93659b814bd1cb5",
-        "type": "function",
-        "z": "5c48f299418418bf",
-        "name": "totais",
-        "func": "msg.payload=\"Braga 2072 | Porto 948 | null 429\";\nreturn msg;",
-        "outputs": 1,
-        "x": 300,
-        "y": 240,
-        "wires": [
-            [
-                "ebc398806b44f4a4",
-                "ab74df361044b50e"
-            ]
-        ]
-    },
-    {
-        "id": "ebc398806b44f4a4",
-        "type": "ui_text",
-        "z": "5c48f299418418bf",
-        "group": "7981d2e653d15930",
-        "label": "Totais",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 500,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "ab74df361044b50e",
-        "type": "debug",
-        "z": "5c48f299418418bf",
-        "tosidebar": true,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 500,
-        "y": 290,
-        "wires": []
-    },
-    {
-        "id": "7dfcdbbcecc50e8e",
-        "type": "inject",
-        "z": "5c48f299418418bf",
-        "props": [
-            {
-                "p": "payload"
+        "id": "d589a7c016e4eccb",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
             },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "topic": "Braga",
-        "payload": "2072",
-        "payloadType": "num",
-        "x": 300,
-        "y": 380,
-        "wires": [
-            [
-                "ad4f15e7a4b98b22"
-            ]
-        ]
-    },
-    {
-        "id": "9271971f782c7708",
-        "type": "inject",
-        "z": "5c48f299418418bf",
-        "props": [
-            {
-                "p": "payload"
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
             },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "topic": "Porto",
-        "payload": "948",
-        "payloadType": "num",
-        "x": 300,
-        "y": 420,
-        "wires": [
-            [
-                "ad4f15e7a4b98b22"
-            ]
-        ]
-    },
-    {
-        "id": "da70322b19a47998",
-        "type": "inject",
-        "z": "5c48f299418418bf",
-        "props": [
-            {
-                "p": "payload"
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
             },
-            {
-                "p": "topic",
-                "vt": "str"
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
             }
-        ],
-        "topic": "null",
-        "payload": "429",
-        "payloadType": "num",
-        "x": 300,
-        "y": 460,
-        "wires": [
-            [
-                "ad4f15e7a4b98b22"
-            ]
-        ]
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
     },
     {
-        "id": "ad4f15e7a4b98b22",
-        "type": "ui_chart",
-        "z": "5c48f299418418bf",
-        "group": "7981d2e653d15930",
-        "label": "Totais por Cidade",
-        "chartType": "bar",
-        "outputs": 1,
-        "x": 500,
-        "y": 420,
-        "wires": [
-            []
-        ]
+        "id": "t1",
+        "type": "ui_tab",
+        "name": "ISI Store",
+        "order": 1
+    },
+    {
+        "id": "26d48e0432af2983",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Local",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "broker1",
+        "type": "mqtt-broker",
+        "name": "Mosquitto local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "ui_tab1",
+        "type": "ui_tab",
+        "name": "ISI Store",
+        "icon": "dashboard"
+    },
+    {
+        "id": "ui_group1",
+        "type": "ui_group",
+        "name": "Vendas",
+        "tab": "ui_tab1",
+        "order": 1,
+        "disp": true,
+        "width": "6"
     },
     {
         "id": "665f20ed9075d114",
@@ -226,6 +186,12 @@
         "cleansession": true
     },
     {
+        "id": "0e916c07679af543",
+        "type": "ui_tab",
+        "name": "ISI Store",
+        "icon": "dashboard"
+    },
+    {
         "id": "7981d2e653d15930",
         "type": "ui_group",
         "name": "Vendas",
@@ -235,13 +201,573 @@
         "width": "6"
     },
     {
-        "id": "0e916c07679af543",
-        "type": "ui_tab",
-        "name": "ISI Store",
-        "icon": "dashboard"
+        "id": "508a156395fcd4ea",
+        "type": "ui_group",
+        "name": "Indicadores ETL",
+        "tab": "0e916c07679af543",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
-        "id": "5851bd91e4d24133",
+        "id": "72a055bf9c0ddcd9",
+        "type": "ui_group",
+        "name": "Detalhe por cidade",
+        "tab": "0e916c07679af543",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "bd71fc228abe475b",
+        "type": "ui_group",
+        "name": "Streaming MQTT",
+        "tab": "0e916c07679af543",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "376f961c9988e2b0",
+        "type": "ui_group",
+        "name": "Indicadores ETL",
+        "tab": "0e916c07679af543",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "0483afb19ea8a89d",
+        "type": "ui_group",
+        "name": "Detalhe por cidade",
+        "tab": "0e916c07679af543",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "de50cdec9dd87324",
+        "type": "ui_group",
+        "name": "Streaming MQTT",
+        "tab": "0e916c07679af543",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "bdf5158f385f1738",
+        "type": "ui_group",
+        "name": "Indicadores ETL",
+        "tab": "0e916c07679af543",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "2dcd3c71ee71b692",
+        "type": "ui_group",
+        "name": "Detalhe por cidade",
+        "tab": "0e916c07679af543",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "194e51ac01bdfd2e",
+        "type": "ui_group",
+        "name": "Streaming MQTT",
+        "tab": "0e916c07679af543",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "7a8b78a9a5305449",
+        "type": "ui_group",
+        "name": "Indicadores ETL",
+        "tab": "0e916c07679af543",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3e4e0361edc832b9",
+        "type": "ui_group",
+        "name": "Detalhe por cidade",
+        "tab": "0e916c07679af543",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "20f26f4c1d7407e4",
+        "type": "ui_group",
+        "name": "Streaming MQTT",
+        "tab": "0e916c07679af543",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "d66e219ab399456e",
+        "type": "inject",
+        "z": "892c4c03051c31fd",
+        "name": "inject 10s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "10",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "71f5e5077ed82e19"
+            ]
+        ]
+    },
+    {
+        "id": "71f5e5077ed82e19",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "vendas",
+        "func": "const vendas = flow.get('vendasReais') || [];\nif (!vendas.length) { node.warn('Sem vendas carregadas de vendas_limpas.csv'); return null; }\nconst i = (flow.get('vendaIdx') || 0) % vendas.length;\nflow.set('vendaIdx', i + 1);\nconst r = vendas[i];\nmsg.topic = 'isi/vendas';\nmsg.payload = {\n    id_venda: r.id_venda,\n    id_produto: r.id_produto,\n    nome_prod: r.nome_prod || '',\n    quantidade: Number(r.quantidade) || 0,\n    preco_unit: Number(r.preco_unit) || 0,\n    total_linha: Number(r.total_linha) || 0\n};\nreturn msg;",
+        "outputs": 1,
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "f97b5254d4347a90",
+                "801c5548b54bb256"
+            ]
+        ]
+    },
+    {
+        "id": "f97b5254d4347a90",
+        "type": "mqtt out",
+        "z": "892c4c03051c31fd",
+        "topic": "isi/vendas",
+        "qos": "0",
+        "retain": "false",
+        "broker": "665f20ed9075d114",
+        "x": 500,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "801c5548b54bb256",
+        "type": "debug",
+        "z": "892c4c03051c31fd",
+        "tosidebar": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "9ab8999a06758dbf",
+        "type": "ui_text",
+        "z": "892c4c03051c31fd",
+        "group": "7981d2e653d15930",
+        "label": "Totais por cidade",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1270,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1622e1b4cccb0647",
+        "type": "ui_chart",
+        "z": "892c4c03051c31fd",
+        "group": "7981d2e653d15930",
+        "order": 1,
+        "label": "Receita por cidade (€)",
+        "chartType": "bar",
+        "outputs": 1,
+        "x": 1280,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f9b1b47d53847826",
+        "type": "ui_chart",
+        "z": "892c4c03051c31fd",
+        "group": "7981d2e653d15930",
+        "order": 2,
+        "width": 0,
+        "height": 4,
+        "label": "Ticket médio por cidade (€)",
+        "chartType": "bar",
+        "outputs": 1,
+        "x": 1300,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4cfa23f39fb474a",
+        "type": "ui_template",
+        "z": "892c4c03051c31fd",
+        "group": "7981d2e653d15930",
+        "name": "Top produtos por receita",
+        "order": 3,
+        "width": 0,
+        "height": 4,
+        "format": "<style>.nr-bars{font-size:13px}.nr-bar{display:flex;align-items:center;margin:5px 0}.nr-bar .lbl{width:42%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:6px}.nr-bar .trk{flex:1;background:#eee;height:10px;border-radius:5px;overflow:hidden}.nr-bar .fil{display:block;height:100%;background:#1f77b4;border-radius:5px}.nr-bar .val{width:95px;text-align:right;font-weight:bold}</style><div class='nr-bars'><div class='nr-bar' ng-repeat='p in msg.payload'><span class='lbl'>{{p.nome}}</span><div class='trk'><div class='fil' style='width:{{p.pct}}%'></div></div><span class='val'>{{p.total | number:2}} €</span></div></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1290,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7e9e0d6108b14ca8",
+        "type": "ui_gauge",
+        "z": "892c4c03051c31fd",
+        "name": "Total ETL",
+        "group": "7a8b78a9a5305449",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Total vendas (€)",
+        "label": "€",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 4000,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1240,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "d87bca4b465ea9c3",
+        "type": "ui_text",
+        "z": "892c4c03051c31fd",
+        "group": "7a8b78a9a5305449",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Nº vendas",
+        "label": "Nº vendas",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1250,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "47086548a3051dda",
+        "type": "ui_text",
+        "z": "892c4c03051c31fd",
+        "group": "7a8b78a9a5305449",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Ticket médio",
+        "label": "Ticket médio (€)",
+        "format": "€ {{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1250,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4ecfe4b6b31dcf4c",
+        "type": "ui_text",
+        "z": "892c4c03051c31fd",
+        "group": "7a8b78a9a5305449",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Atualizado",
+        "label": "Atualizado",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1250,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "863fa8427258f12a",
+        "type": "ui_button",
+        "z": "892c4c03051c31fd",
+        "name": "Atualizar",
+        "group": "7a8b78a9a5305449",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Atualizar",
+        "tooltip": "Recalcular indicadores ETL",
+        "color": "",
+        "bgcolor": "",
+        "icon": "refresh",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "str",
+        "x": 340,
+        "y": 600,
+        "wires": [
+            [
+                "6574c62d378377e9"
+            ]
+        ]
+    },
+    {
+        "id": "db4ca208ba9dd7d6",
+        "type": "ui_template",
+        "z": "892c4c03051c31fd",
+        "group": "3e4e0361edc832b9",
+        "name": "Resumo por cidade",
+        "order": 1,
+        "width": 0,
+        "height": 4,
+        "format": "<style>.nr-table{width:100%;border-collapse:collapse;font-size:14px}.nr-table th,.nr-table td{padding:6px 8px;border-bottom:1px solid #ddd;text-align:left}.nr-table th{background:#f5f5f5}.nr-table td.num,.nr-table th.num{text-align:right}</style><table class='nr-table'><thead><tr><th>Cidade</th><th class='num'>Vendas</th><th class='num'>Total (€)</th><th class='num'>Ticket médio (€)</th><th class='num'>% total</th></tr></thead><tbody><tr ng-repeat='row in msg.payload track by $index'><td>{{row.cidade}}</td><td class='num'>{{row.vendas}}</td><td class='num'>{{row.total | number:2}}</td><td class='num'>{{row.ticket | number:2}}</td><td class='num'>{{row.quota}}</td></tr></tbody></table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1270,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e803798436810417",
+        "type": "ui_template",
+        "z": "892c4c03051c31fd",
+        "group": "20f26f4c1d7407e4",
+        "name": "Últimas vendas MQTT",
+        "order": 1,
+        "width": 0,
+        "height": 6,
+        "format": "<style>.nr-table{width:100%;border-collapse:collapse;font-size:14px}.nr-table th,.nr-table td{padding:6px 8px;border-bottom:1px solid #ddd;text-align:left}.nr-table th{background:#f5f5f5}.nr-table td.num,.nr-table th.num{text-align:right}</style><table class='nr-table'><thead><tr><th>Hora</th><th>Venda</th><th>Produto</th><th class='num'>Qtd.</th><th class='num'>Total (€)</th></tr></thead><tbody><tr ng-repeat='row in msg.payload track by $index'><td>{{row.hora}}</td><td>{{row.id_venda}}</td><td>{{row.produto}}</td><td class='num'>{{row.quantidade}}</td><td class='num'>{{row.total_linha | number:2}}</td></tr></tbody></table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 560,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "086ec50c1713415e",
+        "type": "mqtt in",
+        "z": "892c4c03051c31fd",
+        "name": "Vendas MQTT",
+        "topic": "isi/vendas",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "665f20ed9075d114",
+        "inputs": 0,
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "3c708855906fcb3a"
+            ]
+        ]
+    },
+    {
+        "id": "3c708855906fcb3a",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "formatar venda",
+        "func": "let s = msg.payload;\nif (typeof s === 'string') {\n    try { s = JSON.parse(s); } catch (e) { s = {}; }\n}\nif (!s || typeof s !== 'object') { s = {}; }\nconst agora = new Date().toLocaleTimeString('pt-PT');\nconst linha = {\n    hora: agora,\n    id_venda: s.id_venda || '-',\n    produto: s.nome_prod || s.id_produto || '-',\n    quantidade: (s.quantidade !== undefined ? s.quantidade : '-'),\n    total_linha: Number(s.total_linha || 0)\n};\nconst ultimas = flow.get('ultimasVendas') || [];\nultimas.unshift(linha);\nif (ultimas.length > 8) { ultimas.pop(); }\nflow.set('ultimasVendas', ultimas);\nmsg.payload = ultimas;\nreturn msg;",
+        "outputs": 1,
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "e803798436810417"
+            ]
+        ]
+    },
+    {
+        "id": "2e94d77dbf48c4bc",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "resumo ETL",
+        "func": "const s = msg.payload || {};\nconst total = Number(s.total || 0);\nconst n = Number(s.n || 0);\nconst ticket = Number(s.ticket || 0);\nconst linhas = s.linhas || [];\nconst texto = linhas.map(l => l.cidade + ' ' + l.total.toFixed(2)).join(' | ');\nnode.send([\n    { payload: total },\n    { payload: n },\n    { payload: ticket.toFixed(2) },\n    { payload: linhas },\n    { payload: s.timestamp || new Date().toLocaleString('pt-PT') },\n    { payload: texto }\n]);\nreturn null;",
+        "outputs": 6,
+        "x": 910,
+        "y": 380,
+        "wires": [
+            [
+                "7e9e0d6108b14ca8"
+            ],
+            [
+                "d87bca4b465ea9c3"
+            ],
+            [
+                "47086548a3051dda"
+            ],
+            [
+                "db4ca208ba9dd7d6"
+            ],
+            [
+                "4ecfe4b6b31dcf4c"
+            ],
+            [
+                "9ab8999a06758dbf"
+            ]
+        ]
+    },
+    {
+        "id": "ddaf07be774623b3",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "dados ticket",
+        "func": "const s = msg.payload || {};\n(s.linhas || []).forEach(l => node.send({ topic: l.cidade, payload: l.ticket }));\nreturn null;",
+        "outputs": 1,
+        "x": 910,
+        "y": 520,
+        "wires": [
+            [
+                "f9b1b47d53847826"
+            ]
+        ]
+    },
+    {
+        "id": "3bca836b94929aef",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "top produtos",
+        "func": "const s = msg.payload || {};\nmsg.payload = s.top || [];\nreturn msg;",
+        "outputs": 1,
+        "x": 910,
+        "y": 560,
+        "wires": [
+            [
+                "a4cfa23f39fb474a"
+            ]
+        ]
+    },
+    {
+        "id": "0cf065f3fdf94d9a",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "dados cidade",
+        "func": "const s = msg.payload || {};\n(s.linhas || []).forEach(l => node.send({ topic: l.cidade, payload: l.total }));\nreturn null;",
+        "outputs": 1,
+        "x": 910,
+        "y": 460,
+        "wires": [
+            [
+                "1622e1b4cccb0647"
+            ]
+        ]
+    },
+    {
+        "id": "05814c9bae7f72e0",
+        "type": "inject",
+        "z": "892c4c03051c31fd",
+        "name": "Arranque",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "6574c62d378377e9"
+            ]
+        ]
+    },
+    {
+        "id": "6574c62d378377e9",
+        "type": "file in",
+        "z": "892c4c03051c31fd",
+        "name": "vendas_limpas.csv",
+        "filename": "C:\\Hermes\\Universidade\\3ano\\Integração de Sistemas de Informação\\tp01-33222\\Dados_Saida\\vendas_limpas.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": true,
+        "encoding": "none",
+        "x": 370,
+        "y": 520,
+        "wires": [
+            [
+                "8e34b8df85349f5d"
+            ]
+        ]
+    },
+    {
+        "id": "8e34b8df85349f5d",
+        "type": "function",
+        "z": "892c4c03051c31fd",
+        "name": "parse vendas",
+        "func": "const s = msg.payload || {};\nif (msg.error) { node.error(msg.error); return null; }\nconst texto = String(s).trim();\nif (!texto) { node.error('vendas_limpas.csv vazio'); return null; }\nconst linhasFicheiro = texto.split(/\\r?\\n/);\nconst cabecalho = linhasFicheiro.shift().split(';').map(c => c.trim());\nconst registos = linhasFicheiro.filter(l => l.trim()).map(linha => {\n    const campos = linha.split(';');\n    const r = {};\n    cabecalho.forEach((c, i) => { r[c] = (campos[i] || '').trim(); });\n    return r;\n});\nif (!registos.length) { node.error('vendas_limpas.csv sem registos'); return null; }\nlet total = 0;\nconst cidades = {};\nconst produtos = {};\nregistos.forEach(r => {\n    const valor = Number(r.total_linha) || 0;\n    const qtd = Number(r.quantidade) || 0;\n    const cidade = r.cidade_cliente || 'Sem cliente';\n    const produto = r.nome_prod || r.id_produto || 'Desconhecido';\n    total += valor;\n    if (!cidades[cidade]) { cidades[cidade] = { cidade, vendas: 0, total: 0, unidades: 0 }; }\n    cidades[cidade].vendas += 1;\n    cidades[cidade].total += valor;\n    cidades[cidade].unidades += qtd;\n    if (!produtos[produto]) { produtos[produto] = { nome: produto, total: 0, unidades: 0 }; }\n    produtos[produto].total += valor;\n    produtos[produto].unidades += qtd;\n});\nconst n = registos.length;\nconst ticket = n ? total / n : 0;\nconst linhas = Object.values(cidades).map(c => ({\n    cidade: c.cidade,\n    vendas: c.vendas,\n    total: Number(c.total.toFixed(2)),\n    ticket: Number((c.total / c.vendas).toFixed(2)),\n    quota: total ? ((c.total / total) * 100).toFixed(1) + '%' : '0.0%',\n    unidades: c.unidades\n})).sort((a, b) => b.total - a.total);\nconst top = Object.values(produtos).map(p => ({ nome: p.nome, total: Number(p.total.toFixed(2)), unidades: p.unidades })).sort((a, b) => b.total - a.total).slice(0, 5);\nconst max = top.length ? top[0].total : 1;\ntop.forEach(p => { p.pct = max ? Number(((p.total / max) * 100).toFixed(1)) : 0; });\nflow.set('vendasReais', registos);\nconst resumo = { total: Number(total.toFixed(2)), n, ticket: Number(ticket.toFixed(2)), linhas, top, timestamp: new Date().toLocaleString('pt-PT') };\nnode.send([{ payload: resumo }, { payload: resumo }, { payload: resumo }, { payload: resumo }]);\nreturn null;",
+        "outputs": 4,
+        "x": 620,
+        "y": 520,
+        "wires": [
+            [
+                "2e94d77dbf48c4bc"
+            ],
+            [
+                "0cf065f3fdf94d9a"
+            ],
+            [
+                "ddaf07be774623b3"
+            ],
+            [
+                "3bca836b94929aef"
+            ]
+        ]
+    },
+    {
+        "id": "98891a030bb997af",
         "type": "global-config",
         "env": [],
         "modules": {

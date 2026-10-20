@@ -24,6 +24,8 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows, positioning, fit, calc}
 
+\renewcommand{\arraystretch}{1.15}
+
 \addto\captionsportuguese{
   \renewcommand{\lstlistingname}{Código}
   \renewcommand{\lstlistlistingname}{Índice de Códigos}
@@ -53,7 +55,7 @@
     literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
              {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
              {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-             {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+             {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
              {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
              {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
              {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {º}{{\textsuperscript{o}}}1 {ª}{{\textsuperscript{a}}}1
@@ -98,10 +100,10 @@
 
     {\large
     \begin{tabular}{r@{\quad}l}
-      \textbf{Autor:} & A PREENCHER \\
-      \textbf{Número:} & A PREENCHER \\
-      \textbf{Email:} & A PREENCHER \\
-      \textbf{Repositório Git:} & \url{A-PREENCHER-LINK-GIT} \\
+      \textbf{Autor:} & Tiago Fontes \\
+      \textbf{Número:} & 33222 \\
+      \textbf{Email:} & \url{a33222@alunos.ipca.pt} \\
+      \textbf{Repositório Git:} & \url{https://github.com/Fontes9/Trabalho-Pr-tico-I---ISI.git} \\
     \end{tabular}\par}
 
     \vspace{1.2cm}
@@ -112,24 +114,38 @@
 
 % Resumo
 \begin{abstract}
-O presente relatório documenta o processo de \textit{Extract, Transformation and Load} (ETL) desenvolvido para a loja fictícia ISI Store. O problema consistiu na dispersão de dados por sistemas isolados: vendas em CSV, clientes em JSON, catálogo em XML, \textit{stock} em base de dados relacional PostgreSQL e catálogo externo via API REST. No estado da arte compararam-se as plataformas Pentaho Data Integration, Talend Open Studio e KNIME, tendo-se selecionado o Pentaho pela orquestração visual de transformações e \textit{jobs} (Hitachi Vantara, 2026). A abordagem implementou extração multiformato, limpeza com expressões regulares, anonimização, junções e agregações, carga para \textit{Data Mart}, exportações CSV/JSON, notificações por correio eletrónico, transferência FTP e painel complementar em Node-RED com MQTT (Node-RED, 2026). Obteve-se execução integral válida: 13 vendas reduziram-se a 10 limpas, 6 clientes a 2 válidos, 158 produtos integrados, 10 linhas carregadas em \texttt{dw\_vendas} e agregação por cidade (Braga 2072/3, Porto 948/2, nulo 429/5). Concluiu-se que o processo cumpre as três fases obrigatórias do enunciado (Ferreira e Ribeiro, 2026).
+O presente relatório documenta o desenvolvimento de um processo de \textit{Extract, Transform and Load} (ETL) para a loja fictícia ISI Store. O problema consistiu na dispersão de dados por sistemas isolados: vendas em CSV, clientes em JSON, catálogo em XML, \textit{stock} em base de dados relacional PostgreSQL e catálogo externo via API REST. No estado da arte compararam-se as plataformas Pentaho Data Integration, Talend Open Studio e KNIME, tendo-se selecionado o Pentaho pela orquestração visual de transformações e \textit{jobs}. A abordagem seguiu uma metodologia de \textit{Design Science Research}, com especificação de requisitos, conceção da arquitetura, implementação incremental e avaliação por contagens e \textit{previews}. Implementou-se extração multiformato, limpeza com expressões regulares, anonimização, junções e agregações, carga para \textit{Data Mart}, exportações CSV/JSON, notificações por correio eletrónico, transferência FTP e um painel complementar em Node-RED com MQTT. Obteve-se uma execução integral válida: 13 vendas reduziram-se a 10 limpas, 6 clientes a 2 válidos, 158 produtos integrados, 10 linhas carregadas em \texttt{dw\_vendas} e agregação por cidade (Braga 2077.47/3, Porto 949.98/2 e sem cliente 436.17/5). A contribuição principal é um processo reprodutível que combina integração \textit{batch}, qualidade de dados, anonimização e visualização quase em tempo real, cumprindo as três fases obrigatórias do enunciado.
 \end{abstract}
 
-\noindent\textbf{Palavras-chave:} ETL; Pentaho; Node-RED; MQTT; PostgreSQL; Expressões Regulares.
+\noindent\textbf{Palavras-chave:} ETL; Pentaho; Node-RED; MQTT; PostgreSQL; Expressões Regulares; Qualidade de Dados.
 
 \section*{Siglas}
+\addcontentsline{toc}{section}{Siglas}
 No presente documento utilizam-se as siglas abaixo, ordenadas alfabeticamente.
 \begin{itemize}
+\item API -- \textit{Application Programming Interface}
 \item BD -- Base de Dados
 \item CSV -- \textit{Comma-Separated Values}
-\item ETL -- \textit{Extract, Transformation and Load}
+\item ETL -- \textit{Extract, Transform and Load}
 \item FTP -- \textit{File Transfer Protocol}
 \item JSON -- \textit{JavaScript Object Notation}
 \item MQTT -- \textit{Message Queuing Telemetry Transport}
 \item REST -- \textit{Representational State Transfer}
 \item RGPD -- Regulamento Geral sobre a Proteção de Dados
+\item SQL -- \textit{Structured Query Language}
 \item XML -- \textit{eXtensible Markup Language}
 \end{itemize}
+
+\section*{Glossário}
+\addcontentsline{toc}{section}{Glossário}
+No presente documento, os termos seguintes são utilizados com o significado indicado.
+\begin{description}
+\item[Anonimização] Processo de transformação de dados pessoais de modo a impedir a identificação dos titulares, preservando a utilidade analítica dos registos.
+\item[Data Mart] Subconjunto de um \textit{data warehouse}, orientado a uma área de negócio, neste caso as vendas da ISI Store.
+\item[ETL] Processo de extração, transformação e carga de dados entre sistemas, utilizado para consolidar fontes heterogéneas.
+\item[Qualidade de dados] Grau de adequação dos dados ao uso pretendido, avaliado por dimensões como completude, consistência, validade e unicidade.
+\item[Streaming] Processamento ou transporte contínuo de eventos, neste caso vendas publicadas em MQTT para atualização do painel.
+\end{description}
 
 \clearpage
 
@@ -138,91 +154,166 @@ No presente documento utilizam-se as siglas abaixo, ordenadas alfabeticamente.
 \clearpage
 \listoffigures
 \clearpage
-\lstlistoflistings
+\listoftables
 \clearpage
+\lstlistoflistings
 
-% 1. Enquadramento
-\section{Enquadramento}
-O presente capítulo apresenta o contexto do trabalho. A Secção~1.1 identifica a equipa e o contexto curricular, a Secção~1.2 define os objetivos, a Secção~1.3 descreve a metodologia de trabalho e a Secção~1.4 apresenta a estrutura do documento.
+% 1. Introdução
+\section{Introdução}
+O presente capítulo apresenta a motivação, o enquadramento, os objetivos, a metodologia, o plano de trabalho e a estrutura do documento. A Secção~1.1 explora o problema e a ausência de uma solução integrada; a Secção~1.2 identifica o contexto curricular; a Secção~1.3 define os objetivos; a Secção~1.4 descreve a metodologia; a Secção~1.5 apresenta o plano de trabalho; e a Secção~1.6 resume a organização do relatório.
 
-\subsection{Equipa e contexto}
-O trabalho foi desenvolvido individualmente no âmbito da Unidade Curricular de Integração de Sistemas de Informação (ISI), da Licenciatura em Engenharia de Sistemas Informáticos, no ano letivo 2026/27. Decidiu-se explorar o tema ISI Store, uma loja fictícia de informática e mobiliário de escritório.
+\subsection{Motivação}
+A ISI Store mantinha sistemas isolados: vendas da loja física em CSV, registo de clientes em JSON, catálogo em XML e \textit{stock} em PostgreSQL, sem uma visão consolidada do negócio. Esta dispersão impedia a análise rápida de receita, ticket médio e desempenho por cidade, ao mesmo tempo que os dados apresentavam problemas de qualidade: duplicado V002, quantidade zero (V005), cliente nulo (V007), data com formato incorreto (V009 com \texttt{/}), correio eletrónico inválido e NIF não numérico.
+
+A ausência de um processo de integração obrigava a reconciliações manuais e aumentava o risco de decisões baseadas em informação incompleta. O contexto atual favorece a resolução deste problema: as plataformas ETL visuais permitem orquestrar fontes heterogéneas, os \textit{dashboards} facilitam a exploração de indicadores e os protocolos de mensagens, como MQTT, possibilitam atualizações quase em tempo real. O trabalho parte, assim, de um problema concreto de integração e qualidade de dados, alinhado com o enunciado da unidade curricular \cite{ferreira2026enunciado}.
+
+\subsection{Enquadramento}
+O trabalho foi desenvolvido individualmente no âmbito da Unidade Curricular de Integração de Sistemas de Informação (ISI), da Licenciatura em Engenharia de Sistemas Informáticos, no ano letivo 2026/27. Explorou-se o tema ISI Store, uma loja fictícia de informática e mobiliário de escritório.
+
+A plataforma principal foi o Pentaho Data Integration (Kettle/Spoon) \textit{Community Edition} 10.2. Como ferramentas complementares utilizaram-se PostgreSQL com DBeaver, Node-RED com Mosquitto e o painel Node-RED Dashboard. O repositório Git do projeto está disponível em \url{https://github.com/Fontes9/Trabalho-Pr-tico-I---ISI.git}.
 
 \subsection{Objetivos}
-Definiram-se objetivos poucos e claros: (i) consolidar conceitos de integração de sistemas de informação com dados; (ii) especificar um cenário de aplicação de processos ETL; (iii) explorar o Pentaho Data Integration com ferramenta complementar Node-RED; (iv) documentar o processo com qualidade (Ferreira e Ribeiro, 2026).
+Definiram-se quatro objetivos, intencionalmente poucos e claros:
+\begin{enumerate}
+\item analisar as fontes heterogéneas e especificar os requisitos de integração;
+\item implementar um processo ETL completo, com extração, limpeza, validação, junções, agregações e carga;
+\item integrar a orquestração, as notificações, a transferência de ficheiros e a visualização de indicadores;
+\item avaliar os resultados e documentar o processo de forma reprodutível.
+\end{enumerate}
+Os objetivos enquadram-se no enunciado da unidade curricular \cite{ferreira2026enunciado} e orientam a análise apresentada nos capítulos seguintes.
 
 \subsection{Metodologia de trabalho}
-Seguiu-se uma metodologia por fases: especificação das fontes heterogéneas, implementação incremental E--T--L no Pentaho, validação por contagens e \textit{previews}, orquestração em \textit{Job} com correio eletrónico e FTP, integração complementar via MQTT e redação progressiva do relatório.
+Adotou-se uma metodologia de investigação aplicada inspirada em \textit{Design Science Research} (DSR) \cite{hevner2004design}. O processo organizou-se em seis atividades: identificação do problema; revisão de literatura e comparação de soluções; especificação de requisitos e da arquitetura; implementação do artefacto; avaliação por contagens, \textit{previews} e execução integral; e comunicação dos resultados.
 
-\subsection{Estrutura do documento}
-A Secção~2 descreve o problema, a Secção~3 a estratégia e o enquadramento teórico e prático, a Secção~4 as transformações, a Secção~5 os \textit{jobs} e destinos, a Secção~6 o vídeo de demonstração, a Secção~7 a conclusão e a Secção~8 as referências.
+A componente de investigação incidiu na comparação de plataformas, na definição de regras de qualidade e na avaliação crítica dos resultados. Assim, o trabalho não se limitou ao desenvolvimento de software: incluiu revisão de literatura, especificação, implementação e discussão fundamentada, distinguindo-se de uma abordagem meramente técnica.
 
-Plataforma principal: Pentaho Data Integration (Kettle / Spoon) Community Edition 10.2. Ferramentas complementares: PostgreSQL com DBeaver, Node-RED com Mosquitto e painel Node-RED Dashboard. Repositório Git: \url{A-PREENCHER-LINK-GIT}.
+\subsection{Plano de trabalho}
+O plano inicial foi organizado em semanas relativas ao início do projeto, com revisão semanal e ajuste progressivo das metas. A Tabela~\ref{tab:plano} sintetiza o plano inicial e o plano final ajustado.
 
-% 2. Problema
-\section{Problema}
-O presente capítulo explora o problema, identifica a ausência de soluções e releva a pertinência do contexto atual.
-A loja ISI Store mantinha sistemas isolados: vendas da loja física em CSV, registo de clientes em JSON, catálogo em XML e \textit{stock} em PostgreSQL, sem visão consolidada. Verificou-se ausência de solução de integração, com dados sujos: duplicado V002, quantidade zero (V005), cliente nulo (V007) e data com formato errado (V009 com \texttt{/}), correio eletrónico inválido e NIF não numérico.
-
-Objetivo: construir um processo ETL completo que integre estas fontes, limpe e valide com expressões regulares, efetue junções e agregações, carregue um \textit{Data Mart} e gere alertas e painel de suporte à decisão (Ferreira e Ribeiro, 2026).
-
-% 3. Estratégia
-\section{Estratégia utilizada}
-O presente capítulo identifica os operadores e processos envolvidos. A Secção~3.1 compara as soluções existentes e a Secção~3.2 apresenta a arquitetura adotada.
-
-\subsection{Soluções existentes}
-Identificaram-se soluções no domínio da integração de dados: Pentaho Data Integration, Talend Open Studio e KNIME. A Tabela~\ref{tab:comparativo} compara-as segundo critérios alinhados com o trabalho: orquestração visual de transformações e \textit{jobs}, diversidade de conectores e integração complementar. Concluiu-se que o Pentaho se adequava melhor por combinar transformações e \textit{jobs} com correio eletrónico e FTP na mesma ferramenta visual, enquanto o Talend exige maior configuração e o KNIME se orienta mais para \textit{analytics} (Hitachi Vantara, 2026; Talend, 2026; KNIME, 2026).
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|l|}
+\small
+\begin{tabular}{|l|l|l|}
+\hline
+Fase & Plano inicial & Plano final \\ \hline
+Revisão de literatura e requisitos & Semanas 1--2 & Semanas 1--2 \\ \hline
+Conceção da arquitetura e modelo de dados & Semana 3 & Semanas 3--4 \\ \hline
+Implementação E--T--L & Semanas 4--6 & Semanas 4--6 \\ \hline
+Orquestração, FTP e correio eletrónico & Semana 7 & Semana 7 \\ \hline
+Painel e MQTT & Semana 8 & Semanas 8--9 \\ \hline
+Validação, redação e revisão & Semanas 9--10 & Semanas 10--11 \\ \hline
+\end{tabular}
+\caption{Plano de trabalho inicial e plano final ajustado.}
+\label{tab:plano}
+\end{table}
+
+As semanas indicadas são relativas ao início do projeto, e o plano final foi ajustado à disponibilidade das fontes e do ambiente de laboratório.
+
+\subsection{Estrutura do documento}
+A Secção~2 apresenta o estado da arte e a comparação de soluções existentes. A Secção~3 descreve a análise e especificação, incluindo requisitos, arquitetura, modelo de dados e interfaces. A Secção~4 documenta a implementação das transformações, do \textit{Job} e do painel. A Secção~5 analisa e discute os resultados. A Secção~6 apresenta a conclusão, as limitações e os trabalhos futuros. Por fim, constam as referências bibliográficas e o anexo com as contagens de validação.
+
+% 2. Estado da Arte
+\section{Estado da Arte}
+O presente capítulo enquadra teoricamente o trabalho e identifica soluções existentes. A Secção~2.1 apresenta os conceitos fundamentais de ETL, qualidade de dados, \textit{Data Mart}, orquestração e privacidade. A Secção~2.2 compara plataformas de integração e justifica a escolha do Pentaho.
+
+\subsection{Conceitos e fundamentos}
+O ETL é o processo responsável por extrair dados de fontes heterogéneas, transformá-los de acordo com regras de negócio e carregá-los num destino consolidado \cite{kimball2013datawarehouse}. A fase de extração lida com formatos e protocolos distintos; a transformação concentra a limpeza, a validação, a normalização e o enriquecimento; a carga persiste os dados em estruturas orientadas à análise, como um \textit{Data Mart}.
+
+A qualidade de dados é avaliada por dimensões como completude, consistência, validade e unicidade. No caso da ISI Store, estas dimensões traduzem-se na remoção de duplicados, na rejeição de quantidades nulas, na validação de correio eletrónico e NIF e na correção de datas. A qualidade não é apenas um requisito técnico: condiciona a confiança nos indicadores e a utilidade do processo para a decisão.
+
+Um \textit{Data Mart} é um subconjunto de um \textit{data warehouse}, orientado a uma área de negócio e ajustado às necessidades de análise \cite{kimball2013datawarehouse}. A orquestração em \textit{jobs} permite encadear transformações, tratar erros e executar tarefas complementares, como notificações e transferências de ficheiros. Em paralelo, a integração de dados pessoais exige conformidade com o RGPD, designadamente minimização e anonimização \cite{rgpd2016}.
+
+A integração pode ser \textit{batch} ou em \textit{streaming}. O processo principal deste trabalho é \textit{batch}, porque o \textit{Job} é executado sobre ficheiros e uma base de dados relacional PostgreSQL \cite{postgresql2026}. A visualização complementar recorre a MQTT para publicar vendas e atualizar um painel, aproximando a análise do tempo real \cite{nodered2026,mosquitto2026}.
+
+\subsection{Soluções existentes}
+Identificaram-se três soluções no domínio da integração de dados: Pentaho Data Integration, Talend Open Studio e KNIME. A Tabela~\ref{tab:comparativo} compara-as segundo critérios alinhados com os objetivos do trabalho: orquestração visual, diversidade de conectores, notificações e FTP, curva de aprendizagem, licenciamento e integração com \textit{streaming}.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{4.2cm}|p{3.2cm}|p{3.2cm}|p{3.2cm}|}
 \hline
 Critério & Pentaho 10.2 & Talend & KNIME \\ \hline
-Orquestração ETL + Job visual & Sim & Parcial & Parcial \\ \hline
+Orquestração visual ETL + \textit{Job} & Sim & Parcial & Parcial \\ \hline
 Conectores CSV/JSON/XML/REST/BD & Sim & Sim & Sim \\ \hline
-Email + FTP nativos no Job & Sim & Parcial & Não \\ \hline
+Correio eletrónico e FTP no \textit{Job} & Sim & Parcial & Não \\ \hline
+Curva de aprendizagem & Média & Média-alta & Média \\ \hline
+Licenciamento & \textit{Community Edition} & \textit{Open Studio} & \textit{Open source} \\ \hline
+Integração com MQTT/\textit{streaming} & Via plugin/Node-RED & Via extensão & Via extensão \\ \hline
+Foco principal & Integração e orquestração & Integração & Análise de dados \\ \hline
 \end{tabular}
-\caption{Quadro comparativo de plataformas. Fonte: autor (2026).}
+\caption{Quadro comparativo de plataformas de integração.}
 \label{tab:comparativo}
 \end{table}
 
-\subsection{Arquitetura adotada}
-A arquitetura seguiu as três fases obrigatórias, sintetizadas na Tabela~\ref{tab:fontes}: fase E multiformato, fase T com limpeza, expressões regulares, junções e agregações, e fase L com persistência, exportações, notificações e painel. As expressões regulares utilizadas constam da Tabela~\ref{tab:regex} e as tabelas de destino no Código~\ref{cod:tabelas}.
+A Tabela~\ref{tab:comparativo} mostra que as três plataformas cobrem os conectores necessários, mas diferem na orquestração e nas tarefas complementares. O Pentaho adequou-se melhor porque combina transformações e \textit{jobs} com correio eletrónico e FTP na mesma ferramenta visual, enquanto o Talend exige maior configuração e o KNIME se orienta mais para análise de dados \cite{hitachi2026pentaho,talend2026,knime2026}.
+
+A escolha do Pentaho foi também influenciada pela existência de uma edição comunitária e pela possibilidade de integrar o Node-RED como ferramenta complementar de visualização e MQTT. Esta combinação permite separar a integração \textit{batch} da apresentação quase em tempo real, sem substituir a plataforma principal.
+
+% 3. Análise e Especificação
+\section{Análise e Especificação}
+O presente capítulo descreve a análise do problema e a especificação da solução. A Secção~3.1 apresenta os requisitos; a Secção~3.2 a arquitetura lógica e funcional; a Secção~3.3 o modelo de dados; e a Secção~3.4 as interfaces de interação e integração de serviços.
+
+\subsection{Requisitos}
+Os requisitos foram derivados do enunciado e da análise das fontes de dados \cite{ferreira2026enunciado}. A Tabela~\ref{tab:requisitos} sistematiza os requisitos funcionais (RF) e não funcionais (RNF), com a respetiva prioridade.
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\small
+\begin{tabular}{|p{1.2cm}|p{8.6cm}|p{1.8cm}|p{1.6cm}|}
 \hline
-Fonte & Formato & Step Pentaho \\ \hline
-vendas.csv (ficheiro local) & CSV & CSV File Input \\ \hline
-clientes.json (ficheiro local) & JSON & JSON Input \\ \hline
-produtos.xml (ficheiro local) & XML & Get Data from XML \\ \hline
-API FakeStore & JSON REST & Generate Rows + REST Client \\ \hline
-stock BD PostgreSQL & Tabela SQL & Table Input \\ \hline
+ID & Requisito & Tipo & Prioridade \\ \hline
+RF01 & Extrair vendas de CSV, clientes de JSON, produtos de XML, \textit{stock} de PostgreSQL e catálogo de API REST & Funcional & Alta \\ \hline
+RF02 & Limpar e validar vendas: duplicados, quantidade, cliente, data e total de linha & Funcional & Alta \\ \hline
+RF03 & Validar e anonimizar clientes, incluindo correio eletrónico, telemóvel e NIF & Funcional & Alta \\ \hline
+RF04 & Juntar vendas, clientes e produtos e agregar por cidade & Funcional & Alta \\ \hline
+RF05 & Carregar o resultado no \textit{Data Mart} \texttt{dw\_vendas} & Funcional & Alta \\ \hline
+RF06 & Exportar \texttt{vendas\_limpas.csv} e \texttt{resumo.json} & Funcional & Média \\ \hline
+RF07 & Enviar correio eletrónico com os totais por cidade & Funcional & Média \\ \hline
+RF08 & Transferir os ficheiros exportados por FTP & Funcional & Média \\ \hline
+RF09 & Publicar vendas em MQTT e apresentar painel de indicadores & Funcional & Média \\ \hline
+RF10 & Registar a execução em \textit{log} & Funcional & Média \\ \hline
+RNF01 & Garantir conformidade com o RGPD na anonimização de dados pessoais & Não funcional & Alta \\ \hline
+RNF02 & Assegurar rastreabilidade e reprodutibilidade da execução & Não funcional & Alta \\ \hline
+RNF03 & Proporcionar uma visualização simples e legível dos indicadores & Não funcional & Média \\ \hline
+RNF04 & Concluir a execução do \textit{Job} sem intervenção manual & Não funcional & Média \\ \hline
+RNF05 & Permitir a portabilidade dos artefactos entre ambientes locais & Não funcional & Média \\ \hline
 \end{tabular}
-\caption{Fase E -- diversidade de formatos e fontes. Fonte: autor (2026).}
-\label{tab:fontes}
+\caption{Requisitos funcionais e não funcionais.}
+\label{tab:requisitos}
 \end{table}
 
-Fase T: Sort Rows, Unique Rows, Filter Rows, Regex Evaluation, Replace in String, Calculator, Stream Lookup, Group By e Write to Log.
+Os requisitos RF01 a RF10 cobrem o percurso completo dos dados, desde as fontes até ao consumo. Os requisitos RNF01 e RNF02 são particularmente relevantes porque o processo manipula dados pessoais e tem de ser auditável.
 
-Fase L: Table Output (dw\_vendas), Text File Output (CSV) e JSON Output, Send Mail, FTP Put e Write to Log. Orquestração via Job.
+\subsection{Arquitetura lógica e funcional}
+A arquitetura adotada segue uma organização em camadas: fontes, integração, persistência e consumo. A Figura~\ref{fig:arquitetura} representa esta organização de forma lógica, sem impor uma infraestrutura física única.
 
-Regex utilizadas (Tabela~\ref{tab:regex}):
-\begin{table}[H]
+\begin{figure}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
-Campo & Expressão regular \\ \hline
-Email & \verb|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$| \\ \hline
-Telemóvel PT após limpar \verb|[\s-]| & \verb|^9[1236][0-9]{7}$| \\ \hline
-NIF & \verb|^[0-9]{9}$| \\ \hline
-Data & \verb|^\d{4}-\d{2}-\d{2}$| \\ \hline
-\end{tabular}
-\caption{Expressões regulares aplicadas. Fonte: autor (2026).}
-\label{tab:regex}
-\end{table}
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners, align=center, minimum width=3.4cm, minimum height=1.2cm, font=\small},
+  node distance=1.2cm and 1.4cm
+]
+\node[box] (fontes) {Fontes\\CSV, JSON, XML\\REST, PostgreSQL};
+\node[box, right=of fontes] (etl) {Pentaho\\E--T--L};
+\node[box, right=of etl] (dest) {Destinos\\PostgreSQL\\CSV, JSON, FTP};
+\node[box, below=of dest] (cons) {Consumo\\Node-RED, MQTT\\correio eletrónico};
+\draw[->, thick] (fontes) -- (etl);
+\draw[->, thick] (etl) -- (dest);
+\draw[->, thick] (dest) -- (cons);
+\end{tikzpicture}
+\caption{Arquitetura lógica do processo de integração da ISI Store.}
+\label{fig:arquitetura}
+\end{figure}
 
-Criação das tabelas de destino:
-\begin{lstlisting}[language=SQL, caption={Criação das tabelas dw\_vendas e stock na BD isi\_store. Fonte: autor (2026).}, label={cod:tabelas}]
+A camada de fontes reúne os sistemas isolados da loja. A camada de integração concentra as transformações e o \textit{Job} do Pentaho. A camada de persistência inclui o \textit{Data Mart}, os ficheiros exportados e a pasta que simula o servidor FTP. A camada de consumo integra o correio eletrónico, o painel Node-RED e o tópico MQTT.
+
+Esta separação permite substituir uma fonte ou um destino sem alterar todo o processo. Permite também distinguir a integração \textit{batch}, responsável pela consolidação, da visualização quase em tempo real, responsável pela apresentação dos indicadores.
+
+\subsection{Modelação de dados}
+O modelo de dados inclui a tabela de factos \texttt{dw\_vendas} e a tabela de apoio \texttt{stock}. O Código~\ref{cod:tabelas} apresenta a criação de ambas na base de dados \texttt{isi\_store}, e a Tabela~\ref{tab:dicionario} descreve os campos de \texttt{dw\_vendas}.
+
+\begin{lstlisting}[language=SQL, caption={Criação das tabelas dw\_vendas e stock na base de dados isi\_store.}, label={cod:tabelas}]
 CREATE TABLE dw_vendas (
   id_venda VARCHAR(10) PRIMARY KEY,
   id_cliente VARCHAR(10),
@@ -238,256 +329,386 @@ CREATE TABLE stock (
 );
 \end{lstlisting}
 
-% 4. Transformações
-\section{Transformações}
-O presente capítulo descreve as transformações implementadas. A Secção~4.1 apresenta a extração, a Secção~4.2 a limpeza de vendas, a Secção~4.3 a validação de clientes e a Secção~4.4 as junções e agregações.
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|l|l|p{7cm}|}
+\hline
+Campo & Tipo & Descrição \\ \hline
+\texttt{id\_venda} & VARCHAR(10) & Identificador da venda (chave primária). \\ \hline
+\texttt{id\_cliente} & VARCHAR(10) & Identificador do cliente; pode ser nulo após a limpeza. \\ \hline
+\texttt{id\_produto} & VARCHAR(10) & Identificador do produto vendido. \\ \hline
+\texttt{data} & DATE & Data da venda, normalizada para o formato ISO. \\ \hline
+\texttt{quantidade} & INT & Número de unidades vendidas; deve ser superior a zero. \\ \hline
+\texttt{preco\_unit} & NUMERIC(10,2) & Preço unitário do produto. \\ \hline
+\texttt{total\_linha} & NUMERIC(10,2) & Total da linha, calculado como quantidade $\times$ preço unitário. \\ \hline
+\end{tabular}
+\caption{Dicionário de dados da tabela dw\_vendas.}
+\label{tab:dicionario}
+\end{table}
+
+O Código~\ref{cod:tabelas} e a Tabela~\ref{tab:dicionario} mostram que o modelo é simples e orientado à análise. A tabela \texttt{stock} mantém a chave do produto e a quantidade disponível, permitindo cruzar vendas e existências sem alterar a granularidade da tabela de factos.
+
+\subsection{Interação e integração de serviços}
+A solução integra ficheiros, base de dados, correio eletrónico, FTP e MQTT. A Tabela~\ref{tab:interfaces} resume as interfaces e a respetiva finalidade.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{2.2cm}|p{3.2cm}|p{1.8cm}|p{5cm}|}
+\hline
+Interface & Tecnologia & Direção & Finalidade \\ \hline
+Vendas & CSV & Entrada & Leitura das vendas da loja física. \\ \hline
+Clientes & JSON & Entrada & Leitura dos dados de clientes. \\ \hline
+Produtos & XML & Entrada & Leitura do catálogo de produtos. \\ \hline
+Catálogo externo & REST/JSON & Entrada & Recurso de apoio à integração. \\ \hline
+Stock & PostgreSQL/JDBC & Entrada & Leitura das existências. \\ \hline
+Data Mart & PostgreSQL/JDBC & Saída & Persistência das vendas limpas. \\ \hline
+Alerta & SMTP & Saída & Envio dos totais por cidade. \\ \hline
+Ficheiros & FTP & Saída & Transferência de CSV e JSON. \\ \hline
+Painel & HTTP e MQTT & Saída/Entrada & Visualização e atualização do painel. \\ \hline
+\end{tabular}
+\caption{Interfaces de interação e integração de serviços.}
+\label{tab:interfaces}
+\end{table}
+
+A Tabela~\ref{tab:interfaces} evidencia que a solução não se limita a mover dados: define também pontos de consumo e de notificação. O painel Node-RED lê o CSV consolidado e recebe eventos MQTT, enquanto o correio eletrónico e o FTP comunicam o resultado da execução.
+
+% 4. Implementação
+\section{Implementação}
+O presente capítulo descreve a implementação da solução. A Secção~4.1 apresenta a extração; a Secção~4.2 a limpeza de vendas; a Secção~4.3 a validação e anonimização de clientes; a Secção~4.4 as junções e agregações; a Secção~4.5 a conversão XML--JSON; a Secção~4.6 a orquestração; a Secção~4.7 a persistência e exportação; e a Secção~4.8 o painel Node-RED.
 
 \subsection{E\_extracao.ktr}
-Implementou-se leitura paralela antes do processamento principal, com \textit{schemas} heterogéneos preservados (a junção efetuou-se na fase T). O canvas com os 6 \textit{steps} paralelos encontra-se na Figura~\ref{fig:e_extracao} e o log de execução na Figura~\ref{fig:e_log}: vendas W=13, clientes W=6, produtos W=158, REST W=1 e \textit{stock} W=158.
+Implementou-se a leitura paralela das fontes antes do processamento principal, com \textit{schemas} heterogéneos preservados; a junção efetuou-se na fase de transformação. A Tabela~\ref{tab:fontes} resume as fontes e os \textit{steps} utilizados, a Figura~\ref{fig:e_extracao} apresenta o diagrama com os seis \textit{steps} paralelos e a Figura~\ref{fig:e_log} o log de execução: vendas W=13, clientes W=6, produtos W=158, REST W=1 e \textit{stock} W=158.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+Fonte & Formato & \textit{Step} Pentaho \\ \hline
+vendas.csv (ficheiro local) & CSV & CSV File Input \\ \hline
+clientes.json (ficheiro local) & JSON & JSON Input \\ \hline
+produtos.xml (ficheiro local) & XML & Get Data from XML \\ \hline
+API FakeStore & JSON REST & Generate Rows + REST Client \\ \hline
+stock BD PostgreSQL & Tabela SQL & Table Input \\ \hline
+\end{tabular}
+\caption{Fase E -- diversidade de formatos e fontes.}
+\label{tab:fontes}
+\end{table}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{imagens/e_extracao.png}
-\caption{Fase E no Spoon -- extrações paralelas: CSV, JSON, XML, Generate+REST e Table Input. Fonte: autor (2026).}
+\caption{Fase E no Spoon -- extrações paralelas: CSV, JSON, XML, Generate+REST e Table Input.}
 \label{fig:e_extracao}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{imagens/e_log_rest_ok.png}
-\caption{Log de execução E\_extracao -- 13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock. Fonte: autor (2026).}
+\caption{Registo de execução E\_extracao -- 13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock.}
 \label{fig:e_log}
 \end{figure}
 
-Os dados de entrada evidenciam os problemas a tratar: a Figura~\ref{fig:preview_sujo} mostra as 13 vendas com quantidade zero, duplicado V002, cliente nulo e data errada; a Figura~\ref{fig:preview_clientes} mostra os 6 clientes com correio inválido, correio nulo, NIF não numérico e duplicado; a Figura~\ref{fig:preview_produtos} mostra os 158 produtos com \textit{Loop XPath}; a Figura~\ref{fig:rest_preview} mostra a resposta 200 da API FakeStore obtida com \textit{trigger} Generate Rows; e a Figura~\ref{fig:preview_stock} mostra as 158 linhas de \textit{stock}.
+Os dados de entrada evidenciam os problemas a tratar: a Figura~\ref{fig:preview_sujo} mostra as 13 vendas com quantidade zero, duplicado V002, cliente nulo e data errada; a Figura~\ref{fig:preview_clientes} mostra os 6 clientes com correio inválido, correio nulo, NIF não numérico e duplicado; a Figura~\ref{fig:preview_produtos} mostra os 158 produtos com \textit{Loop XPath}; a Figura~\ref{fig:rest_preview} mostra a resposta 200 da API FakeStore obtida com \textit{trigger} Generate Rows \cite{fakestore2026}; e a Figura~\ref{fig:preview_stock} mostra as 158 linhas de \textit{stock}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_sujo.png}
-\caption{Preview vendas.csv -- 13 linhas com quantidade 0, duplicado V002, id\_cliente null e data errada. Fonte: autor (2026).}
+\caption{Pré-visualização de vendas.csv -- 13 linhas com quantidade 0, duplicado V002, \texttt{id\_cliente} nulo e data errada.}
 \label{fig:preview_sujo}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_clientes.png}
-\caption{Preview clientes.json -- 6 linhas com email inválido, email null, NIF ABC123 e duplicado. Fonte: autor (2026).}
+\caption{Pré-visualização de clientes.json -- 6 linhas com correio inválido, \texttt{email} nulo, NIF ABC123 e duplicado.}
 \label{fig:preview_clientes}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_produtos.png}
-\caption{Preview produtos.xml -- 158 produtos (P001-P158) com Loop XPath /produtos/produto. Fonte: autor (2026).}
+\caption{Pré-visualização de produtos.xml -- 158 produtos (P001--P158) com \textit{Loop XPath} /produtos/produto.}
 \label{fig:preview_produtos}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{imagens/rest_preview.png}
-\caption{Preview REST client -- 1 linha status 200 com JSON FakeStore (trigger Generate Rows dummy=1). Fonte: autor (2026).}
+\caption{Pré-visualização do REST client -- 1 linha com estado 200 e JSON da FakeStore (\textit{trigger} Generate Rows dummy=1).}
 \label{fig:rest_preview}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.55\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_table_stock.png}
-\caption{Preview Table Input -- 158 linhas da tabela stock. Fonte: autor (2026).}
+\caption{Pré-visualização do Table Input -- 158 linhas da tabela stock.}
 \label{fig:preview_stock}
 \end{figure}
 
-A base de dados \texttt{isi\_store} encontra-se documentada nas Figuras~\ref{fig:bd_tabelas} a \ref{fig:db_ok}: tabelas criadas, conteúdo de \textit{stock}, \texttt{dw\_vendas} vazia antes da carga e conexão testada com sucesso.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{imagens/bd_tabelas.png}
-\caption{Tabelas dw\_vendas e stock na BD isi\_store. Fonte: autor (2026).}
-\label{fig:bd_tabelas}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{imagens/bd_stock_conteudo.png}
-\caption{Conteúdo da tabela stock. Fonte: autor (2026).}
-\label{fig:bd_stock}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{imagens/bd_dw_vazia.png}
-\caption{Tabela dw\_vendas vazia antes da carga. Fonte: autor (2026).}
-\label{fig:bd_dw}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{imagens/db_connection_ok.png}
-\caption{Conexão PostgreSQL isi\_store testada com sucesso. Fonte: autor (2026).}
-\label{fig:db_ok}
-\end{figure}
-
 \subsection{T\_limpeza.ktr}
-Aplicou-se Sort Rows por \texttt{id\_venda} seguido de Unique Rows, que removeu o duplicado V002 (13 para 12), e Filter Rows com \texttt{quantidade\textgreater0 AND id\_cliente IS NOT NULL}, que removeu V005 e V007 (12 para 10), conforme a Figura~\ref{fig:filter10}. Efetuou-se Replace da data de \texttt{/} para \texttt{-} (V009) e calculou-se \texttt{total\_linha=quantidade*preco\_unit} em Calculator BigNumber com precisão 2, após correção do \textit{locale} (Decimal \texttt{.} sem agrupamento), conforme a Figura~\ref{fig:preview_limpo} com V001 a 1799.98.
+Aplicou-se Sort Rows por \texttt{id\_venda} seguido de Unique Rows, que removeu o duplicado V002 (13 para 12), e Filter Rows com \texttt{quantidade\textgreater0 AND id\_cliente IS NOT NULL}, que removeu V005 e V007 (12 para 10), conforme a Figura~\ref{fig:filter10}. Efetuou-se a substituição da data de \texttt{/} para \texttt{-} (V009) e calculou-se \texttt{total\_linha=quantidade*preco\_unit} em Calculator BigNumber com precisão 2, após correção do \textit{locale} (Decimal \texttt{.} sem agrupamento), conforme a Figura~\ref{fig:preview_limpo}, com V001 a 1799.98.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/filter_10.png}
-\caption{Filter Rows vendas -- 10 linhas após remover quantidade 0 e id\_cliente null. Fonte: autor (2026).}
+\caption{Filter Rows vendas -- 10 linhas após remover quantidade 0 e id\_cliente null.}
 \label{fig:filter10}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.6\textheight,keepaspectratio]{imagens/preview_limpo.png}
-\caption{Calculator final vendas -- 10 linhas com total\_linha correto (V001 1799.98). Fonte: autor (2026).}
+\caption{Calculator final vendas -- 10 linhas com total\_linha correto (V001 1799.98).}
 \label{fig:preview_limpo}
 \end{figure}
 
 \subsection{T\_clientes.ktr}
-Normalizou-se o telemóvel com Replace por expressão regular \texttt{[\textbackslash s-]} (Figura~\ref{fig:replace_tel}), validaram-se correio eletrónico, telemóvel limpo e NIF em três avaliações Regex em série (Figura~\ref{fig:regex3}) e filtraram-se os triplos Y/Y/Y, restando 2 limpos (C001, C003), conforme a Figura~\ref{fig:clientes_limpos}. Aplicou-se anonimização para conformidade com o RGPD (Figura~\ref{fig:anon}).
+Normalizou-se o telemóvel com Replace por expressão regular \texttt{[\textbackslash s-]} (Figura~\ref{fig:replace_tel}), validaram-se correio eletrónico, telemóvel limpo e NIF em três avaliações Regex em série (Figura~\ref{fig:regex3}) e filtraram-se os triplos Y/Y/Y, restando 2 clientes limpos (C001 e C003), conforme a Figura~\ref{fig:clientes_limpos}. Aplicou-se anonimização para conformidade com o RGPD (Figura~\ref{fig:anon}) \cite{rgpd2016}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{imagens/replace_tel.png}
-\caption{Replace telemóvel -- normalização com Regex [\textbackslash s-] (912 345 678 para 912345678). Fonte: autor (2026).}
+\caption{Substituição de telemóvel -- normalização com expressão regular [\textbackslash s-] (912 345 678 para 912345678).}
 \label{fig:replace_tel}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{imagens/regex_3.png}
-\caption{Validação Regex -- 6 clientes com email\_ok, telemovel\_ok e nif\_ok (2 limpos C001/C003). Fonte: autor (2026).}
+\caption{Validação com expressões regulares -- 6 clientes com \texttt{email\_ok}, \texttt{telemovel\_ok} e \texttt{nif\_ok} (2 limpos C001/C003).}
 \label{fig:regex3}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{imagens/clientes_limpos.png}
-\caption{Clientes limpos -- 2 válidos após filtro Y/Y/Y com schema remapeado. Fonte: autor (2026).}
+\caption{Clientes limpos -- 2 válidos após filtro Y/Y/Y com esquema remapeado.}
 \label{fig:clientes_limpos}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{imagens/anonimizacao.png}
-\caption{Anonimização RGPD -- nif\_anon ******789 e email\_anon a***@gmail. Fonte: autor (2026).}
+\caption{Anonimização RGPD -- \texttt{nif\_anon} ******789 e \texttt{email\_anon} a***@gmail.}
 \label{fig:anon}
 \end{figure}
 
+A Tabela~\ref{tab:regex} sistematiza as expressões regulares aplicadas na limpeza e validação dos dados.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Campo & Expressão regular \\ \hline
+Correio eletrónico & \verb|^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$| \\ \hline
+Telemóvel PT após limpar \verb|[\s-]| & \verb|^9[1236][0-9]{7}$| \\ \hline
+NIF & \verb|^[0-9]{9}$| \\ \hline
+Data & \verb|^\d{4}-\d{2}-\d{2}$| \\ \hline
+\end{tabular}
+\caption{Expressões regulares aplicadas.}
+\label{tab:regex}
+\end{table}
+
 \subsection{T\_joins.ktr}
-Efetuaram-se dois Stream Lookups (sem ordenação prévia, ao contrário do Merge Join): vendas com clientes por \texttt{id\_cliente} (Figura~\ref{fig:join1}) e resultado com produtos por \texttt{id\_produto} (Figura~\ref{fig:joinfinal}). Os nulos em C002/C004/C005 refletem integridade referencial, pois esses clientes foram filtrados como sujos. O canvas completo encontra-se na Figura~\ref{fig:tjoin} e a agregação por cidade na Figura~\ref{fig:groupby}: nulo 429/5, Braga 2072/3 e Porto 948/2 (sem Sort prévio obtinham-se 9 linhas).
+Efetuaram-se dois Stream Lookups, sem ordenação prévia, ao contrário do Merge Join: vendas com clientes por \texttt{id\_cliente} (Figura~\ref{fig:join1}) e o resultado com produtos por \texttt{id\_produto} (Figura~\ref{fig:joinfinal}). Os nulos em C002, C004 e C005 refletem integridade referencial, pois esses clientes foram filtrados como sujos. O diagrama completo encontra-se na Figura~\ref{fig:tjoin} e a agregação por cidade na Figura~\ref{fig:groupby}: sem cliente 436.17/5, Braga 2077.47/3 e Porto 949.98/2. Sem Sort prévio obtinham-se 9 linhas.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.62\textheight,keepaspectratio]{imagens/join_clientes.png}
-\caption{Join 1 Stream Lookup vendas+clientes -- 10 linhas, nulls por integridade referencial. Fonte: autor (2026).}
+\caption{Junção 1 -- Stream Lookup vendas+clientes, 10 linhas, nulos por integridade referencial.}
 \label{fig:join1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth,height=0.62\textheight,keepaspectratio]{imagens/join_final.png}
-\caption{Join final Stream Lookup 2 +produtos -- 10 linhas com nome\_prod e categoria\_prod. Fonte: autor (2026).}
+\caption{Junção final -- Stream Lookup 2 + produtos, 10 linhas com \texttt{nome\_prod} e \texttt{categoria\_prod}.}
 \label{fig:joinfinal}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{imagens/t_join.png}
-\caption{Canvas T\_join completo -- vendas+clientes+produtos, 2 lookups, Sort+Group. Fonte: autor (2026).}
+\caption{Diagrama T\_join completo -- vendas+clientes+produtos, 2 lookups, Sort+Group.}
 \label{fig:tjoin}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{imagens/groupby_3.png}
-\caption{Group By cidade\_cliente -- 3 linhas: null 429/5, Braga 2072/3, Porto 948/2. Fonte: autor (2026).}
+\caption{Group By \texttt{cidade\_cliente} -- 3 linhas: sem cliente 436.17/5, Braga 2077.47/3 e Porto 949.98/2.}
 \label{fig:groupby}
 \end{figure}
 
-% 5. Jobs
-\section{Jobs}
-O presente capítulo descreve a orquestração do processo. A Secção~5.1 apresenta o \textit{Job} principal, a Secção~5.2 a persistência e exportação e a Secção~5.3 a ferramenta complementar.
+\subsection{T\_conversao.ktr}
+A transformação de conversão reutiliza o catálogo de produtos e gera \texttt{produtos.json} com 158 registos no bloco \texttt{produtos}, preservando o preço com duas casas decimais. O diagrama encontra-se na Figura~\ref{fig:tconversao}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/t_conversao.png}
+\caption{Conversão XML para JSON -- 158 produtos exportados para \texttt{produtos.json}.}
+\label{fig:tconversao}
+\end{figure}
 
 \subsection{J\_principal.kjb}
-Implementou-se o \textit{Job} com a sequência START, E\_extracao, T\_joins, L\_carga, FTP\_csv, FTP\_json, Mail e Write to log, conforme a Figura~\ref{fig:job}, com execução integral válida. Utilizaram-se \textit{entries} Transformation para as três transformações, Send Mail para o alerta com os totais 2072/948/429 (Figura~\ref{fig:mail}), FTP Put com um step por ficheiro (limitação da versão 10.2 a um wildcard por step) para servidor local \texttt{127.0.0.1:21} e Write to Log para registo de sucesso.
+Implementou-se o \textit{Job} com a sequência START, E\_extracao, T\_joins, L\_carga, T\_conversao, FTP\_csv, FTP\_json, Mail e Write to log, conforme a Figura~\ref{fig:job}, com execução integral válida. Utilizaram-se \textit{entries} Transformation para as quatro transformações, Send Mail para o alerta com os totais 2077.47, 949.98 e 436.17 (Figura~\ref{fig:mail}), FTP Put com um \textit{step} por ficheiro, devido à limitação da versão 10.2 a um \textit{wildcard} por \textit{step}, para o servidor local \texttt{127.0.0.1:21}, e Write to Log para registo de sucesso.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{imagens/job_ok.png}
-\caption{Job principal -- E, T, L, FTP csv/json, Mail e Write to Log com sucesso. Fonte: autor (2026).}
+\caption{\textit{Job} principal -- E, T, L, conversão, FTP CSV/JSON, Mail e Write to Log com sucesso.}
 \label{fig:job}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{imagens/email_ok.png}
-\caption{Correio eletrónico de alerta com totais por cidade. Fonte: autor (2026).}
+\caption{Correio eletrónico de alerta com totais por cidade.}
 \label{fig:mail}
 \end{figure}
 
 \subsection{Persistência e exportação}
-A carga persistiu 10 linhas em \texttt{dw\_vendas} (Figura~\ref{fig:dwcheia}) e gerou \texttt{vendas\_limpas.csv} com delimitador \texttt{;} e \texttt{resumo.json} (Figura~\ref{fig:exports}), ambos transferidos para a pasta \texttt{FTP\_remoto} que simula o servidor remoto.
+Antes da carga, confirmou-se a criação das tabelas e a ligação à base de dados. A Figura~\ref{fig:bd_tabelas} mostra as tabelas \texttt{dw\_vendas} e \texttt{stock}; a Figura~\ref{fig:bd_stock} o conteúdo de \textit{stock}; a Figura~\ref{fig:bd_dw} a tabela \texttt{dw\_vendas} vazia antes da carga; e a Figura~\ref{fig:db_ok} a ligação PostgreSQL testada com sucesso.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{imagens/bd_tabelas.png}
+\caption{Tabelas \texttt{dw\_vendas} e \texttt{stock} na base de dados \texttt{isi\_store}.}
+\label{fig:bd_tabelas}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/bd_stock_conteudo.png}
+\caption{Conteúdo da tabela \texttt{stock}.}
+\label{fig:bd_stock}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{imagens/bd_dw_vazia.png}
+\caption{Tabela \texttt{dw\_vendas} vazia antes da carga.}
+\label{fig:bd_dw}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{imagens/db_connection_ok.png}
+\caption{Ligação PostgreSQL \texttt{isi\_store} testada com sucesso.}
+\label{fig:db_ok}
+\end{figure}
+
+A carga persistiu 10 linhas em \texttt{dw\_vendas} (Figura~\ref{fig:dwcheia}) e gerou \texttt{vendas\_limpas.csv}, com delimitador \texttt{;}, e \texttt{resumo.json} (Figura~\ref{fig:exports}), ambos transferidos para a pasta \texttt{FTP\_remoto}, que simula o servidor remoto. A transformação de conversão gerou ainda \texttt{produtos.json} em \texttt{Dados\_Saida}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth,height=0.62\textheight,keepaspectratio]{imagens/dw_cheia.png}
-\caption{Tabela dw\_vendas com 10 linhas e totais corretos (V001 1799.98). Fonte: autor (2026).}
+\caption{Tabela \texttt{dw\_vendas} com 10 linhas e totais corretos (V001 1799.98).}
 \label{fig:dwcheia}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{imagens/export_files.png}
-\caption{Ficheiros exportados em Dados\_Saida. Fonte: autor (2026).}
+\caption{Ficheiros exportados em \texttt{Dados\_Saida}.}
 \label{fig:exports}
 \end{figure}
 
 \subsection{Node-RED e painel}
-Como ferramenta complementar configurou-se o \textit{broker} Mosquitto em \texttt{localhost:1883} (Eclipse Mosquitto, 2026). O fluxo de \textit{streaming} publica mensagens \texttt{STREAM-} com P005 no tópico \texttt{isi/vendas} (Figura~\ref{fig:nrflow}) e o painel apresenta os totais e o gráfico de barras por cidade com os valores do \textit{Group By} (Figura~\ref{fig:nrdash}), em \texttt{.../ui} (Node-RED, 2026).
+Como ferramenta complementar, configurou-se o \textit{broker} Mosquitto em \texttt{localhost:1883} \cite{mosquitto2026}. O fluxo de \textit{streaming} republica em ciclo as vendas reais de \texttt{vendas\_limpas.csv} no tópico \texttt{isi/vendas} (Figura~\ref{fig:nrflow}), e o painel lê o mesmo CSV para calcular indicadores ETL, receita e ticket médio por cidade, principais produtos, tabela por cidade e tabela de vendas em \textit{streaming} MQTT (Figura~\ref{fig:nrdash}), disponível em \texttt{.../ui} \cite{nodered2026}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{imagens/nodered_flow.png}
-\caption{Fluxos Node-RED -- streaming isi/vendas e painel. Fonte: autor (2026).}
+\caption{Fluxos Node-RED -- \textit{streaming} isi/vendas, agregação e painel.}
 \label{fig:nrflow}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{imagens/nodered_dashboard.png}
-\caption{Painel com totais Braga 2072, Porto 948 e nulo 429. Fonte: autor (2026).}
+\includegraphics[width=0.9\textwidth]{imagens/nodered_dashboard.png}
+\caption{Painel calculado a partir de \texttt{vendas\_limpas.csv}: indicadores ETL (total 3463.62), receita e ticket médio por cidade, principais produtos, tabela por cidade e \textit{streaming} MQTT.}
 \label{fig:nrdash}
 \end{figure}
 
-% 6. Vídeo
-\section{Vídeo com demonstração (QR Code)}
-O vídeo com 3 a 5 minutos demonstra a execução do \textit{Job}, os dados de entrada sujos, os resultados limpos, o correio eletrónico e o painel. Disponível em \url{A-PREENCHER-LINK-YOUTUBE} (não listado).
+% 5. Análise e Discussão de Resultados
+\section{Análise e Discussão de Resultados}
+O presente capítulo analisa os resultados da execução e discute o cumprimento dos objetivos. A Secção~5.1 apresenta a validação quantitativa; a Secção~5.2 discute a qualidade, a integração e as limitações; e a Secção~5.3 documenta o vídeo de demonstração.
+
+\subsection{Validação da execução}
+A Tabela~\ref{tab:resultados} sintetiza as contagens obtidas e as evidências associadas. A execução integral do \textit{Job} terminou com sucesso e produziu os ficheiros e os registos esperados.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{2.6cm}|p{4.0cm}|p{3.4cm}|p{3.0cm}|}
+\hline
+Etapa & Entrada & Saída & Evidência \\ \hline
+Extração & 13 vendas, 6 clientes, 158 produtos, 1 REST e 158 \textit{stock} & 5 fontes lidas & Figura~\ref{fig:e_log} \\ \hline
+Limpeza de vendas & 13 linhas & 10 linhas & Figura~\ref{fig:filter10} \\ \hline
+Validação de clientes & 6 registos & 2 válidos & Figura~\ref{fig:clientes_limpos} \\ \hline
+Junção e agregação & 10 vendas & 3 grupos por cidade & Figura~\ref{fig:groupby} \\ \hline
+Carga & 10 vendas & 10 linhas em \texttt{dw\_vendas} & Figura~\ref{fig:dwcheia} \\ \hline
+Exportação & 10 vendas & CSV e JSON & Figura~\ref{fig:exports} \\ \hline
+Conversão & 158 produtos & \texttt{produtos.json} & Figura~\ref{fig:tconversao} \\ \hline
+Orquestração & \textit{Job} completo & Sucesso, correio e FTP & Figuras~\ref{fig:job} e \ref{fig:mail} \\ \hline
+\end{tabular}
+\caption{Síntese das contagens e evidências da execução.}
+\label{tab:resultados}
+\end{table}
+
+A Tabela~\ref{tab:resultados} confirma que o processo cumpriu as três fases obrigatórias: extração multiformato, transformação com limpeza e agregação, e carga com orquestração. Os totais por cidade foram Braga 2077.47/3, Porto 949.98/2 e sem cliente 436.17/5, num total de 3463.62 e ticket médio de 346.36.
+
+\subsection{Discussão dos resultados}
+A discussão organiza-se em três dimensões: qualidade e integridade dos dados, integração e orquestração, e limitações do trabalho.
+
+\subsubsection{Qualidade e integridade dos dados}
+A limpeza reduziu 13 vendas a 10. O duplicado V002 foi eliminado por Sort Rows e Unique Rows; V005 foi rejeitada por quantidade zero; V007 foi rejeitada por cliente nulo; e V009 foi corrigida pela substituição de \texttt{/} por \texttt{-}. A validação de clientes reduziu 6 registos a 2, após verificação de correio eletrónico, telemóvel e NIF.
+
+A existência de vendas sem cliente deve ser interpretada como consequência da integridade referencial: os clientes inválidos foram excluídos, mas as vendas associadas permaneceram para não perder receita. O grupo sem cliente, com 436.17 e 5 vendas, evidencia a importância de distinguir dados ausentes de dados inválidos e de documentar essa decisão.
+
+\subsubsection{Integração e orquestração}
+O \textit{Job} encadeou as transformações e as tarefas complementares sem intervenção manual. O correio eletrónico comunicou os totais por cidade, o FTP transferiu os ficheiros e o \textit{log} registou o sucesso. Esta orquestração reduz o esforço operacional e torna a execução repetível.
+
+O painel Node-RED complementa a integração \textit{batch} com uma leitura do CSV consolidado e uma tabela de \textit{streaming} MQTT. A atualização periódica permite observar vendas recentes, mas não substitui a fonte de verdade: o painel depende do ficheiro produzido pelo ETL.
+
+\subsubsection{Limitações e ameaças à validade}
+O FTP foi configurado num servidor local, devido à ausência de DNS externo no laboratório, pelo que a transferência não representa um ambiente de produção. Os dados são sintéticos e a execução foi validada numa única execução integral, o que limita a generalização dos resultados.
+
+O painel não implementa autenticação nem controlo de acessos, e a dependência de \texttt{vendas\_limpas.csv} introduz uma etapa manual entre o ETL e a atualização dos indicadores. O ficheiro \texttt{produtos.json} foi gerado localmente e não foi incluído na transferência FTP. Estas limitações não invalidam o processo, mas delimitam o seu âmbito.
+
+\subsection{Vídeo de demonstração}
+O vídeo com 3 a 5 minutos demonstra a execução do \textit{Job}, os dados de entrada sujos, os resultados limpos, o correio eletrónico e o painel. Está disponível em \url{A-PREENCHER-LINK-YOUTUBE} (não listado).
 \begin{center}
 % Descomentar após gerar imagens/qrcode.png a partir do link do vídeo:
 % \includegraphics[width=5cm]{imagens/qrcode.png} \\
 A-PREENCHER-QR-CODE
 \end{center}
 
-% 7. Conclusão
-\section{Conclusão e Trabalhos futuros}
-Concluiu-se que o processo cumpre as três fases obrigatórias do enunciado (Ferreira e Ribeiro, 2026): extração multiformato validada por contagens (13 vendas, 6 clientes, 158 produtos, 1 REST e 158 stock), transformação com limpeza, expressões regulares, anonimização, junções e agregação, e carga com orquestração completa incluindo correio eletrónico, FTP e registos. Como limitações registam-se o FTP em servidor local por ausência de DNS externo no laboratório e o painel com valores fixos do \textit{Group By}. Como trabalhos futuros propõem-se persistência em MongoDB, painel em Grafana em tempo real e comparação com Apache Airflow.
+% 6. Conclusão
+\section{Conclusão}
+O presente capítulo sintetiza o trabalho, identifica as contribuições, reconhece as limitações e propõe trabalhos futuros. A Secção~6.1 apresenta a síntese e as contribuições; a Secção~6.2 as limitações; e a Secção~6.3 os trabalhos futuros.
 
-% 8. Referências
-\section{Referências}
-\begin{itemize}
-\item Eclipse Mosquitto (2026). \textit{Mosquitto MQTT Broker}. Disponível em \url{https://mosquitto.org/}.
-\item FakeStore (2026). \textit{FakeStore API}. Disponível em \url{https://fakestoreapi.com/}.
-\item Ferreira, L. e Ribeiro, Ó. (2026). \textit{Enunciado do Trabalho Prático I de ISI}. IPCA.
-\item Hitachi Vantara (2026). \textit{Pentaho Data Integration Documentation}. Disponível em \url{https://www.hitachivantara.com/}.
-\item KNIME (2026). \textit{KNIME Analytics Platform}. Disponível em \url{https://www.knime.com/}.
-\item Node-RED (2026). \textit{Node-RED}. Disponível em \url{https://nodered.org/}.
-\item PostgreSQL (2026). \textit{PostgreSQL Documentation}. Disponível em \url{https://www.postgresql.org/}.
-\item Talend (2026). \textit{Talend Open Studio}. Disponível em \url{https://www.talend.com/}.
-\end{itemize}
+\subsection{Síntese e contribuições}
+O trabalho cumpriu as três fases obrigatórias do enunciado \cite{ferreira2026enunciado}: extração multiformato validada por contagens, transformação com limpeza, expressões regulares, anonimização, junções e agregação, e carga com orquestração completa, incluindo correio eletrónico, FTP e registos. A execução produziu 10 vendas limpas, 2 clientes válidos, 158 produtos integrados e 10 linhas no \textit{Data Mart}.
+
+As contribuições principais são: (i) um processo ETL reprodutível para a ISI Store; (ii) uma especificação de requisitos e uma arquitetura lógica; (iii) regras de qualidade e anonimização alinhadas com o RGPD; (iv) a integração de orquestração, notificação e visualização; e (v) documentação que permite repetir e avaliar o processo. A comparação de plataformas e a discussão dos resultados constituem a componente de investigação aplicada.
+
+\subsection{Limitações}
+As limitações incluem o FTP local, a natureza sintética dos dados, a dependência do painel em relação ao CSV, a ausência de autenticação no painel e a inexistência de um agendador de produção. A validação numa única execução integral também limita a avaliação de desempenho e de robustez.
+
+\subsection{Trabalhos futuros}
+Como trabalhos futuros propõem-se a persistência em MongoDB, a visualização em Grafana em tempo real, a orquestração com Apache Airflow, a inclusão de testes automáticos de qualidade, a autenticação do painel e a integração do \texttt{produtos.json} no fluxo FTP. Propõe-se ainda a comparação com uma arquitetura de \textit{streaming} baseada em Kafka ou MQTT industrial.
+
+% Referências
+\clearpage
+\bibliographystyle{plain}
+\bibliography{referencias}
 
 \appendix
 \section{Contagens de validação}
-Registaram-se as seguintes contagens ao longo do processo: vendas.csv com 13 linhas, clientes.json com 6 objetos, produtos.xml com 158 produtos, tabela stock com 158 linhas, vendas limpas com 10 linhas, clientes válidos com 2 registos, dw\_vendas com 10 linhas e Group By com 3 linhas.
+Registaram-se as seguintes contagens ao longo do processo: \texttt{vendas.csv} com 13 linhas, \texttt{clientes.json} com 6 objetos, \texttt{produtos.xml} com 158 produtos, tabela \texttt{stock} com 158 linhas, vendas limpas com 10 linhas, clientes válidos com 2 registos, \texttt{dw\_vendas} com 10 linhas e Group By com 3 linhas.
 
 \end{document}

@@ -44,9 +44,9 @@ O processo segue as três fases obrigatórias do enunciado:
 ## Estrutura do repositório
 
 ```
-Trabalho Prático I/
+tp01-33222/
 ├── Dados_Entrada/        # Fontes originais (vendas.csv, clientes.json, produtos.xml, stock_novos.sql)
-├── Dados_Saida/          # Resultados (vendas_limpas.csv, resumo.json)
+├── Dados_Saida/          # Resultados (vendas_limpas.csv, resumo.json, produtos.json)
 ├── FTP_remoto/           # Simula o servidor remoto (destino FTP)
 ├── Jobs/
 │   └── J_principal.kjb   # Job de orquestração
@@ -57,7 +57,8 @@ Trabalho Prático I/
 │   ├── T_limpeza.ktr     # Fase T — limpeza de vendas
 │   ├── T_clientes.ktr    # Fase T — validação de clientes
 │   ├── T_joins.ktr       # Fase T — junções e agregações
-│   └── L_carga.ktr       # Fase L — carga do Data Mart
+│   ├── L_carga.ktr       # Fase L — carga do Data Mart
+│   └── T_conversao.ktr   # Conversão XML → JSON
 └── Relatorio/            # Relatório (LaTeX + PDF + imagens)
 ```
 
@@ -66,27 +67,28 @@ Trabalho Prático I/
 - **`E_extracao.ktr`** — 6 _steps_ de leitura paralela com _schemas_ preservados: vendas (13), clientes (6), produtos (158), REST (1) e _stock_ (158).
 - **`T_limpeza.ktr`** — _Sort Rows_ + _Unique Rows_ remove o duplicado `V002` (13→12); _Filter Rows_ (`quantidade>0 AND id_cliente IS NOT NULL`) remove `V005` e `V007` (12→10); _Replace_ corrige a data de `V009`; _Calculator_ (BigNumber, precisão 2, _locale_ `Decimal=.` sem agrupamento) calcula `total_linha` (V001 = 1799.98).
 - **`T_clientes.ktr`** — _Replace_ por regex `[\s-]` normaliza o telemóvel; três avaliações _Regex_ em série validam email, telemóvel e NIF; filtro `Y/Y/Y` mantém 2 clientes válidos (C001, C003); aplica-se anonimização (RGPD).
-- **`T_joins.ktr`** — dois _Stream Lookup_ (vendas+clientes por `id_cliente`; resultado+produtos por `id_produto`) e _Group By_ por cidade: **nulo 429/5**, **Braga 2072/3**, **Porto 948/2**.
+- **`T_joins.ktr`** — dois _Stream Lookup_ (vendas+clientes por `id_cliente`; resultado+produtos por `id_produto`) e _Group By_ por cidade: **nulo 436.17/5**, **Braga 2077.47/3**, **Porto 949.98/2**.
 - **`L_carga.ktr`** — _Table Output_ (`dw_vendas`, 10 linhas), _Text File Output_ (`vendas_limpas.csv`, delimitador `;`) e _JSON Output_ (`resumo.json`).
+- **`T_conversao.ktr`** — converte o catálogo `produtos.xml` em `produtos.json` (158 registos no bloco `produtos`).
 
 ## Job de orquestração
 
 `J_principal.kjb` executa a sequência:
 
 ```
-START → E_extracao → T_joins → L_carga → FTP_csv → FTP_json → Mail → Write to Log
+START → E_extracao → T_joins → L_carga → T_conversao → FTP_csv → FTP_json → Mail → Write to Log
 ```
 
-- **Transformation entries** para E, T e L;
-- **Send Mail** — alerta com os totais por cidade (2072/948/429);
+- **Transformation entries** para E, T, L e conversão;
+- **Send Mail** — alerta com os totais por cidade (2077.47/949.98/436.17);
 - **FTP Put** — um _step_ por ficheiro (a versão 10.2 limita a um _wildcard_ por _step_), para servidor local `127.0.0.1:21`;
 - **Write to Log** — registo de sucesso.
 
 ## Ferramenta complementar — Node-RED
 
 - _Broker_ **Mosquitto** em `localhost:1883`;
-- Fluxo de _streaming_ publica mensagens `STREAM-` no tópico `isi/vendas`;
-- Painel (`/ui`) com os totais e gráfico de barras por cidade.
+- Fluxo de _streaming_ republica em ciclo as vendas reais de `Dados_Saida/vendas_limpas.csv` no tópico `isi/vendas`;
+- Painel (`/ui`) que lê `Dados_Saida/vendas_limpas.csv` e calcula indicadores ETL, receita e ticket médio por cidade, top produtos, tabela por cidade e tabela de vendas em streaming MQTT. O botão **Atualizar** relê o CSV; o nó `file in` usa o caminho absoluto do projeto e deve ser ajustado se a pasta for movida.
 
 ## Contagens de validação
 
@@ -127,7 +129,7 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
    ```
 
 3. Importar os dados de `stock` a partir de `Dados_Entrada/stock_novos.sql`.
-4. Abrir `Jobs/J_principal.kjb` no Spoon e executar (Run). O _job_ percorre E → T → L → FTP → Mail → Log.
+4. Abrir `Jobs/J_principal.kjb` no Spoon e executar (Run). O _job_ percorre E → T → L → conversão → FTP → Mail → Log.
 5. (Opcional) Importar `NodeRED/flows.json` no Node-RED e arrancar o Mosquitto para o painel em `/ui`.
 
 ## Resultados
@@ -136,8 +138,8 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
 - 6 clientes → **2 válidos**;
 - **158 produtos** e **158** linhas de _stock_ integrados;
 - **10 linhas** carregadas em `dw_vendas`;
-- Agregação por cidade: **Braga 2072/3**, **Porto 948/2**, **nulo 429/5**;
-- Exportações `vendas_limpas.csv` e `resumo.json` transferidas para `FTP_remoto/`.
+- Agregação por cidade: **Braga 2077.47/3**, **Porto 949.98/2**, **nulo 436.17/5**;
+- Exportações `vendas_limpas.csv` e `resumo.json` transferidas para `FTP_remoto/`; `produtos.json` gerado em `Dados_Saida/`.
 
 ## Referências
 

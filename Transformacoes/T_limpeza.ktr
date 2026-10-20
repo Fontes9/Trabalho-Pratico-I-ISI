@@ -473,7 +473,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\Trabalho Prático I\Dados_Entrada\vendas.csv</filename>
+    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\vendas.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
