@@ -1,6 +1,6 @@
 # ISI Store — Processo ETL (Trabalho Prático I)
 
-Processo **ETL** (_Extract, Transform, Load_) desenvolvido em **Pentaho Data Integration (Kettle/Spoon)** para uma loja fictícia de informática e mobiliário de escritório, a **ISI Store**. O trabalho integra fontes heterogéneas (CSV, JSON, XML, API REST e PostgreSQL), limpa e valida os dados, executa junções e agregações, carrega um _Data Mart_ e gera exportações, alertas por correio eletrónico e um painel complementar em **Node-RED**.
+Processo **ETL** (_Extract, Transform, Load_) desenvolvido em **Pentaho Data Integration (Kettle/Spoon)** para uma loja fictícia de informática e mobiliário de escritório, a **ISI Store**. O trabalho integra fontes com formatos diferentes (CSV, JSON, XML, API REST e PostgreSQL), limpa e valida os dados, executa junções e agregações, carrega um _Data Mart_ e gera exportações, alertas por correio eletrónico e um painel complementar em **Node-RED**.
 
 Trabalho individual da Unidade Curricular de **Integração de Sistemas de Informação (ISI)**, Licenciatura em Engenharia de Sistemas Informáticos, IPCA — Escola Superior de Tecnologia, 2026/27.
 
@@ -45,21 +45,31 @@ O processo segue as três fases obrigatórias do enunciado:
 
 ```
 tp01-33222/
-├── Dados_Entrada/        # Fontes originais (vendas.csv, clientes.json, produtos.xml, stock_novos.sql)
-├── Dados_Saida/          # Resultados (vendas_limpas.csv, resumo.json, produtos.json)
-├── FTP_remoto/           # Simula o servidor remoto (destino FTP)
-├── Jobs/
-│   └── J_principal.kjb   # Job de orquestração
-├── NodeRED/
-│   └── flows.json        # Fluxos complementares (MQTT + dashboard)
-├── Transformacoes/
-│   ├── E_extracao.ktr    # Fase E — extração multiformato
-│   ├── T_limpeza.ktr     # Fase T — limpeza de vendas
-│   ├── T_clientes.ktr    # Fase T — validação de clientes
-│   ├── T_joins.ktr       # Fase T — junções e agregações
-│   ├── L_carga.ktr       # Fase L — carga do Data Mart
-│   └── T_conversao.ktr   # Conversão XML → JSON
-└── Relatorio/            # Relatório (LaTeX + PDF + imagens)
+├── README.md
+├── doc/
+│   ├── 33222_doc.pdf          # Relatório final
+│   └── relatorio/             # Fonte LaTeX e imagens do relatório
+├── dataintegration/            # Transformações e Job Pentaho
+│   ├── E_extracao.ktr
+│   ├── T_limpeza.ktr
+│   ├── T_clientes.ktr
+│   ├── T_joins.ktr
+│   ├── L_carga.ktr
+│   ├── T_conversao.ktr
+│   └── J_principal.kjb
+├── data/
+│   ├── input/                  # Dados de entrada
+│   │   ├── vendas.csv
+│   │   ├── clientes.json
+│   │   ├── produtos.xml
+│   │   └── stock_novos.sql
+│   └── output/                 # Dados de saída
+│       ├── vendas_limpas.csv
+│       ├── resumo.json
+│       ├── produtos.json
+│       └── ftp/                # Servidor FTP local simulado
+└── src/
+    └── flows.json              # Fluxo Node-RED (dashboard + MQTT)
 ```
 
 ## Transformações
@@ -73,7 +83,7 @@ tp01-33222/
 
 ## Job de orquestração
 
-`J_principal.kjb` executa a sequência:
+`dataintegration/J_principal.kjb` executa a sequência:
 
 ```
 START → E_extracao → T_joins → L_carga → T_conversao → FTP_csv → FTP_json → Mail → Write to Log
@@ -87,8 +97,8 @@ START → E_extracao → T_joins → L_carga → T_conversao → FTP_csv → FTP
 ## Ferramenta complementar — Node-RED
 
 - _Broker_ **Mosquitto** em `localhost:1883`;
-- Fluxo de _streaming_ republica em ciclo as vendas reais de `Dados_Saida/vendas_limpas.csv` no tópico `isi/vendas`;
-- Painel (`/ui`) que lê `Dados_Saida/vendas_limpas.csv` e calcula indicadores ETL, receita e ticket médio por cidade, top produtos, tabela por cidade e tabela de vendas em streaming MQTT. O botão **Atualizar** relê o CSV; o nó `file in` usa o caminho absoluto do projeto e deve ser ajustado se a pasta for movida.
+- Fluxo de _streaming_ republica em ciclo as vendas reais de `data/output/vendas_limpas.csv` no tópico `isi/vendas`;
+- Painel (`/ui`) que lê `data/output/vendas_limpas.csv` e calcula indicadores ETL, receita e ticket médio por cidade, top produtos, tabela por cidade e tabela de vendas em streaming MQTT. O botão **Atualizar** relê o CSV; o nó `file in` usa o caminho absoluto do projeto e deve ser ajustado se a pasta for movida.
 
 ## Contagens de validação
 
@@ -109,7 +119,7 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
 
 ## Como executar
 
-1. **Pré-requisitos:** Pentaho Data Integration 10.2, PostgreSQL com a base de dados `isi_store` (tabelas `dw_vendas` e `stock`) e, opcionalmente, Node-RED + Mosquitto.
+1. **Pré-requisitos:** Pentaho Data Integration 10.2, PostgreSQL com a base de dados `isi_store` (tabelas `dw_vendas` e `stock`), Python com `pyftpdlib` e, opcionalmente, Node-RED + Mosquitto.
 2. Criar a base de dados e as tabelas:
 
    ```sql
@@ -128,9 +138,17 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
    );
    ```
 
-3. Importar os dados de `stock` a partir de `Dados_Entrada/stock_novos.sql`.
-4. Abrir `Jobs/J_principal.kjb` no Spoon e executar (Run). O _job_ percorre E → T → L → conversão → FTP → Mail → Log.
-5. (Opcional) Importar `NodeRED/flows.json` no Node-RED e arrancar o Mosquitto para o painel em `/ui`.
+3. Importar os dados de `stock` a partir de `data/input/stock_novos.sql`.
+4. Iniciar o servidor FTP local que simula o destino remoto, numa janela de terminal:
+
+   ```bash
+   python -m pyftpdlib -p 21 -w -u isi -P isi123 -d "C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output\ftp"
+   ```
+
+   O servidor fica disponível em `127.0.0.1:21`, com o utilizador `isi` e a palavra-passe `isi123`; `data/output/ftp/` é a pasta de destino.
+
+5. Abrir `dataintegration/J_principal.kjb` no Spoon e executar (Run). O _job_ percorre E → T → L → conversão → FTP → Mail → Log.
+6. (Opcional) Importar `src/flows.json` no Node-RED e arrancar o Mosquitto para o painel em `/ui`.
 
 ## Resultados
 
@@ -139,7 +157,7 @@ Pentaho Data Integration 10.2 (Spoon) · PostgreSQL · DBeaver · Node-RED (node
 - **158 produtos** e **158** linhas de _stock_ integrados;
 - **10 linhas** carregadas em `dw_vendas`;
 - Agregação por cidade: **Braga 2077.47/3**, **Porto 949.98/2**, **nulo 436.17/5**;
-- Exportações `vendas_limpas.csv` e `resumo.json` transferidas para `FTP_remoto/`; `produtos.json` gerado em `Dados_Saida/`.
+- Exportações `vendas_limpas.csv` e `resumo.json` transferidas para `data/output/ftp/`; `produtos.json` gerado em `data/output/`.
 
 ## Referências
 

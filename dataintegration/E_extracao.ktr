@@ -670,8 +670,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>400</yloc>
+      <xloc>368</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -699,7 +699,7 @@
     <includeNulls>N</includeNulls>
     <rownum_field/>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\clientes.json</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\clientes.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -836,7 +836,7 @@
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\produtos.xml</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\produtos.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -958,7 +958,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\vendas.csv</filename>
+    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\vendas.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>

@@ -728,7 +728,7 @@
         "type": "file in",
         "z": "892c4c03051c31fd",
         "name": "vendas_limpas.csv",
-        "filename": "C:\\Hermes\\Universidade\\3ano\\Integração de Sistemas de Informação\\tp01-33222\\Dados_Saida\\vendas_limpas.csv",
+        "filename": "C:\\Hermes\\Universidade\\3ano\\Integração de Sistemas de Informação\\tp01-33222\\data\\output\\vendas_limpas.csv",
         "filenameType": "str",
         "format": "utf8",
         "chunk": false,

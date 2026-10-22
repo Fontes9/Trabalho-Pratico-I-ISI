@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>T_conversao</name>
+    <name>T_limpeza</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2026/10/19 10:37:49.533</created_date>
+    <created_date>2026/10/12 20:28:59.015</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2026/10/19 10:37:49.533</modified_date>
+    <modified_date>2026/10/12 20:28:59.015</modified_date>
     <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -437,14 +437,34 @@
   </notepads>
   <order>
     <hop>
-      <from>Get data from XML</from>
-      <to>JSON output</to>
+      <from>Sort rows</from>
+      <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV file input</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Get data from XML</name>
-    <type>getXMLData</type>
+    <name>CSV file input</name>
+    <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -453,117 +473,88 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\vendas.csv</filename>
+    <filename_field/>
     <rownum_field/>
+    <include_filename>N</include_filename>
+    <separator>,</separator>
+    <enclosure>"</enclosure>
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>N</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <format>mixed</format>
     <encoding>UTF-8</encoding>
-    <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\produtos.xml</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
     <fields>
       <field>
+        <name>id_venda</name>
+        <type>String</type>
+        <format/>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>4</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>id_cliente</name>
+        <type>String</type>
+        <format/>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>4</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>id_produto</name>
-        <xpath>id_produto</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>4</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
-        <repeat>N</repeat>
       </field>
       <field>
-        <name>nome</name>
-        <xpath>nome</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
+        <name>data</name>
         <type>String</type>
         <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
-        <repeat>N</repeat>
       </field>
       <field>
-        <name>categoria</name>
-        <xpath>categoria</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>preco</name>
-        <xpath>preco</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>Number</type>
-        <format>#.##</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group/>
-        <length>-1</length>
-        <precision>2</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>stock</name>
-        <xpath>stock</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
+        <name>quantidade</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <length>15</length>
         <precision>0</precision>
         <trim_type>none</trim_type>
-        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>preco_unit</name>
+        <type>BigNumber</type>
+        <format>#.###</format>
+        <currency>€</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
-    <limit>0</limit>
-    <loopxpath>/produtos/produto</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -573,14 +564,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>176</yloc>
+      <xloc>48</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>JSON output</name>
-    <type>JsonOutput</type>
+    <name>Calculator</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -589,45 +580,120 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <outputValue>outputValue</outputValue>
-    <jsonBloc>produtos</jsonBloc>
-    <nrRowsInBloc>0</nrRowsInBloc>
-    <operation_type>writetofile</operation_type>
-    <compatibility_mode>N</compatibility_mode>
-    <encoding>UTF-8</encoding>
-    <addtoresult>N</addtoresult>
-    <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida\produtos</name>
-      <extention>json</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <create_parent_folder>Y</create_parent_folder>
-      <DoNotOpenNewFileInit>N</DoNotOpenNewFileInit>
-      <servlet_output>N</servlet_output>
-    </file>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>total_linha</field_name>
+      <calc_type>MULTIPLY</calc_type>
+      <field_a>preco_unit</field_a>
+      <field_b>quantidade</field_b>
+      <field_c/>
+      <value_type>BigNumber</value_type>
+      <value_length>-1</value_length>
+      <value_precision>2</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol>.</decimal_symbol>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Replace in string</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>quantidade</leftvalue>
+            <function>&gt;</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>0</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <conditions>
+              <condition>
+                <negated>N</negated>
+                <leftvalue>id_cliente</leftvalue>
+                <function>IS NOT NULL</function>
+                <rightvalue/>
+              </condition>
+            </conditions>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>
       <field>
-        <name>id_produto</name>
-        <element>id_produto</element>
-      </field>
-      <field>
-        <name>nome</name>
-        <element>nome</element>
-      </field>
-      <field>
-        <name>categoria</name>
-        <element>categoria</element>
-      </field>
-      <field>
-        <name>preco</name>
-        <element>preco</element>
-      </field>
-      <field>
-        <name>stock</name>
-        <element>stock</element>
+        <in_stream_name>data</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>/</replace_string>
+        <replace_by_string>-</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
     <attributes/>
@@ -639,8 +705,85 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>176</yloc>
+      <xloc>544</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>id_venda</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Unique rows</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field/>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description/>
+    <fields>
+      <field>
+        <name>id_venda</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

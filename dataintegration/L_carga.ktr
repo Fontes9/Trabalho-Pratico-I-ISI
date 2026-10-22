@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>T_joins</name>
+    <name>L_carga</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,18 +427,78 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2026/10/13 16:33:27.748</created_date>
+    <created_date>2026/10/14 14:50:12.096</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2026/10/13 16:33:27.748</modified_date>
+    <modified_date>2026/10/14 14:50:12.096</modified_date>
     <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>DB_isi_store</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>isi_store</database>
+    <port>5432</port>
+    <username>postgres</username>
+    <password>Encrypted 2be98afc86ad79d97bf1ebc75cdc3fd89</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5432</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>CSV file input</from>
       <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Stream lookup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -447,13 +507,48 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Filter rows 2</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex email</from>
+      <to>Regex telemovel</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex nif</from>
+      <to>Filter rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Regex telemovel</from>
+      <to>Regex nif</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Replace in string</from>
       <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Replace in string 2</from>
+      <to>Regex email</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Sort rows</from>
       <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Stream lookup</from>
+      <to>Stream lookup 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -467,58 +562,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string 2</from>
-      <to>Regex email</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex email</from>
-      <to>Regex telemovel</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex telemovel</from>
-      <to>Regex nif</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex nif</from>
-      <to>Filter rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows 2</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Stream lookup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>produtos.xml</from>
       <to>Stream lookup 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Stream lookup</from>
-      <to>Stream lookup 2</to>
+      <from>Stream lookup 2</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Stream lookup 2</from>
-      <to>Sort rows 2</to>
+      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2</from>
-      <to>Group by</to>
+      <from>Stream lookup 2</from>
+      <to>JSON output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -533,7 +598,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\vendas.csv</filename>
+    <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\vendas.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -595,10 +660,10 @@
       <field>
         <name>quantidade</name>
         <type>Integer</type>
-        <format>#</format>
-        <currency>€</currency>
-        <decimal>,</decimal>
-        <group>.</group>
+        <format>#.#</format>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>15</length>
         <precision>0</precision>
         <trim_type>none</trim_type>
@@ -624,8 +689,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>56</xloc>
-      <yloc>184</yloc>
+      <xloc>80</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -654,7 +719,7 @@
       <conversion_mask/>
       <decimal_symbol>.</decimal_symbol>
       <grouping_symbol/>
-      <currency_symbol/>
+      <currency_symbol>€</currency_symbol>
     </calculation>
     <attributes/>
     <cluster_schema/>
@@ -665,8 +730,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>176</yloc>
+      <xloc>688</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -726,8 +791,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>424</xloc>
-      <yloc>184</yloc>
+      <xloc>448</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -807,14 +872,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>288</yloc>
+      <xloc>560</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
+    <name>JSON output</name>
+    <type>JsonOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -823,31 +888,37 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname/>
-    <give_back_row>Y</give_back_row>
-    <group>
-      <field>
-        <name>cidade_cliente</name>
-      </field>
-    </group>
+    <outputValue>outputValue</outputValue>
+    <jsonBloc>vendas</jsonBloc>
+    <nrRowsInBloc>0</nrRowsInBloc>
+    <operation_type>writetofile</operation_type>
+    <compatibility_mode>N</compatibility_mode>
+    <encoding>UTF-8</encoding>
+    <addtoresult>N</addtoresult>
+    <file>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output\resumo</name>
+      <extention>json</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <create_parent_folder>Y</create_parent_folder>
+      <DoNotOpenNewFileInit>N</DoNotOpenNewFileInit>
+      <servlet_output>N</servlet_output>
+    </file>
     <fields>
       <field>
-        <aggregate>total_cidade</aggregate>
-        <subject>total_linha</subject>
-        <type>SUM</type>
-        <valuefield/>
+        <name>id_venda</name>
+        <element>id_venda</element>
       </field>
       <field>
-        <aggregate>num_vendas</aggregate>
-        <subject>id_venda</subject>
-        <type>COUNT_ALL</type>
-        <valuefield/>
+        <name>total_linha</name>
+        <element>total_linha</element>
+      </field>
+      <field>
+        <name>cidade_cliente</name>
+        <element>cidade_cliente</element>
       </field>
     </fields>
     <attributes/>
@@ -859,7 +930,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>720</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -899,8 +970,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>288</yloc>
+      <xloc>272</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -939,8 +1010,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>288</yloc>
+      <xloc>464</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -979,8 +1050,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>288</yloc>
+      <xloc>368</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1018,8 +1089,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>552</xloc>
-      <yloc>184</yloc>
+      <xloc>576</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1057,8 +1128,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>288</yloc>
+      <xloc>176</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1101,8 +1172,53 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>288</yloc>
+      <xloc>656</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>data</name>
+        <rename>data</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1143,50 +1259,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>184</xloc>
-      <yloc>184</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>cidade_cliente</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>400</yloc>
+      <xloc>208</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1233,8 +1307,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>240</yloc>
+      <xloc>816</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1242,7 +1316,7 @@
     <name>Stream lookup 2</name>
     <type>StreamLookup</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1281,7 +1355,268 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>816</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>DB_isi_store</connection>
+    <schema>public</schema>
+    <table>dw_vendas</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>id_venda</column_name>
+        <stream_name>id_venda</stream_name>
+      </field>
+      <field>
+        <column_name>id_cliente</column_name>
+        <stream_name>id_cliente</stream_name>
+      </field>
+      <field>
+        <column_name>id_produto</column_name>
+        <stream_name>id_produto</stream_name>
+      </field>
+      <field>
+        <column_name>data</column_name>
+        <stream_name>data</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>quantidade</stream_name>
+      </field>
+      <field>
+        <column_name>preco_unit</column_name>
+        <stream_name>preco_unit</stream_name>
+      </field>
+      <field>
+        <column_name>total_linha</column_name>
+        <stream_name>total_linha</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Text file output</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>;</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding>UTF-8</encoding>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output\vendas_limpas</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery/>
+    </file>
+    <fields>
+      <field>
+        <name>id_venda</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>id_cliente</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>id_produto</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>data</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>10</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>quantidade</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>preco_unit</name>
+        <type>BigNumber</type>
+        <format>#.###</format>
+        <currency>€</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>total_linha</name>
+        <type>BigNumber</type>
+        <format/>
+        <currency/>
+        <decimal>.</decimal>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>2</precision>
+      </field>
+      <field>
+        <name>nome_cliente</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>cidade_cliente</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>nome_prod</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>categoria_prod</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1316,8 +1651,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>312</xloc>
-      <yloc>184</yloc>
+      <xloc>336</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1345,7 +1680,7 @@
     <includeNulls>N</includeNulls>
     <rownum_field/>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\clientes.json</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\clientes.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1452,8 +1787,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>288</yloc>
+      <xloc>80</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1482,7 +1817,7 @@
     <rownum_field/>
     <encoding>UTF-8</encoding>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\produtos.xml</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\produtos.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1588,8 +1923,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>400</yloc>
+      <xloc>624</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

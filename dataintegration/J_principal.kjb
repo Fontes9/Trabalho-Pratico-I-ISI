@@ -293,7 +293,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\E_extracao.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\dataintegration\E_extracao.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -332,7 +332,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\T_joins.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\dataintegration\T_joins.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -371,7 +371,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\L_carga.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\dataintegration\L_carga.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -492,7 +492,7 @@
       <username>isi</username>
       <password>Encrypted 2be98afc86aa7f2e4cb79a763d7c3fd89</password>
       <remoteDirectory>/</remoteDirectory>
-      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida</localDirectory>
+      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output</localDirectory>
       <wildcard>vendas_limpas.csv</wildcard>
       <binary>Y</binary>
       <timeout>0</timeout>
@@ -525,7 +525,7 @@
       <username>isi</username>
       <password>Encrypted 2be98afc86aa7f2e4cb79a763d7c3fd89</password>
       <remoteDirectory>/</remoteDirectory>
-      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Saida</localDirectory>
+      <localDirectory>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output</localDirectory>
       <wildcard>resumo.json</wildcard>
       <binary>Y</binary>
       <timeout>0</timeout>
@@ -570,7 +570,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Transformacoes\T_conversao.ktr</filename>
+      <filename>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\dataintegration\T_conversao.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

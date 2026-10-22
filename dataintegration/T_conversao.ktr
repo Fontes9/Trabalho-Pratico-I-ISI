@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>T_clientes</name>
+    <name>T_conversao</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,9 +427,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2026/10/13 15:20:58.175</created_date>
+    <created_date>2026/10/19 10:37:49.533</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2026/10/13 15:20:58.175</modified_date>
+    <modified_date>2026/10/19 10:37:49.533</modified_date>
     <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -437,382 +437,14 @@
   </notepads>
   <order>
     <hop>
-      <from>clientes.json</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Regex email</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex email</from>
-      <to>Regex telemovel</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex telemovel</from>
-      <to>Regex nif</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Regex nif</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Anomaliza</to>
+      <from>Get data from XML</from>
+      <to>JSON output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Anomaliza</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>nif</in_stream_name>
-        <out_stream_name>nif_anon</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>^[0-9]{6}</replace_string>
-        <replace_by_string>******</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>email</in_stream_name>
-        <out_stream_name>email_anon</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>^(.).*(@.*)$</replace_string>
-        <replace_by_string>$1***$2</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to/>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>email_ok</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>Y</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>telemovel_ok</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>Y</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>nif_ok</leftvalue>
-            <function>=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Boolean</type>
-              <text>Y</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask/>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex email</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$</script>
-    <matcher>email</matcher>
-    <resultfieldname>email_ok</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>N</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex nif</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^[0-9]{9}$</script>
-    <matcher>nif</matcher>
-    <resultfieldname>nif_ok</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>N</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Regex telemovel</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script>^9[1236][0-9]{7}$</script>
-    <matcher>telemovel_limpo</matcher>
-    <resultfieldname>telemovel_ok</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>N</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>telemovel</in_stream_name>
-        <out_stream_name>telemovel_limpo</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>[\s-]</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>id_cliente</name>
-      </field>
-      <field>
-        <name>nome</name>
-      </field>
-      <field>
-        <name>email</name>
-      </field>
-      <field>
-        <name>telemovel_limpo</name>
-        <rename>telemovel</rename>
-      </field>
-      <field>
-        <name>cidade</name>
-      </field>
-      <field>
-        <name>nif</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>clientes.json</name>
-    <type>JsonInput</type>
+    <name>Get data from XML</name>
+    <type>getXMLData</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -825,16 +457,17 @@
     <include_field/>
     <rownum>N</rownum>
     <addresultfile>N</addresultfile>
+    <namespaceaware>N</namespaceaware>
+    <ignorecomments>N</ignorecomments>
     <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
+    <validating>N</validating>
+    <usetoken>N</usetoken>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
     <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <ignoreMissingPath>Y</ignoreMissingPath>
-    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
-    <includeNulls>N</includeNulls>
     <rownum_field/>
+    <encoding>UTF-8</encoding>
     <file>
-      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\Dados_Entrada\clientes.json</name>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\input\produtos.xml</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -842,21 +475,10 @@
     </file>
     <fields>
       <field>
-        <name>id_cliente</name>
-        <path>$[*].id_cliente</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>email</name>
-        <path>$[*].email</path>
+        <name>id_produto</name>
+        <xpath>id_produto</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
         <currency/>
@@ -869,7 +491,9 @@
       </field>
       <field>
         <name>nome</name>
-        <path>$[*].nome</path>
+        <xpath>nome</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
         <currency/>
@@ -881,8 +505,10 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>telemovel</name>
-        <path>$[*].telemovel</path>
+        <name>categoria</name>
+        <xpath>categoria</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
         <type>String</type>
         <format/>
         <currency/>
@@ -894,36 +520,42 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>nif</name>
-        <path>$[*].nif</path>
-        <type>String</type>
-        <format/>
+        <name>preco</name>
+        <xpath>preco</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>Number</type>
+        <format>#.##</format>
         <currency/>
-        <decimal/>
+        <decimal>.</decimal>
         <group/>
         <length>-1</length>
-        <precision>-1</precision>
+        <precision>2</precision>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>cidade</name>
-        <path>$[*].cidade</path>
-        <type>String</type>
+        <name>stock</name>
+        <xpath>stock</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
         <length>-1</length>
-        <precision>-1</precision>
+        <precision>0</precision>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
     </fields>
     <limit>0</limit>
+    <loopxpath>/produtos/produto</loopxpath>
     <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <valueField/>
+    <XmlField/>
+    <prunePath/>
     <shortFileFieldName/>
     <pathFieldName/>
     <hiddenFieldName/>
@@ -941,8 +573,74 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>144</yloc>
+      <xloc>80</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>JSON output</name>
+    <type>JsonOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <outputValue>outputValue</outputValue>
+    <jsonBloc>produtos</jsonBloc>
+    <nrRowsInBloc>0</nrRowsInBloc>
+    <operation_type>writetofile</operation_type>
+    <compatibility_mode>N</compatibility_mode>
+    <encoding>UTF-8</encoding>
+    <addtoresult>N</addtoresult>
+    <file>
+      <name>C:\Hermes\Universidade\3ano\Integração de Sistemas de Informação\tp01-33222\data\output\produtos</name>
+      <extention>json</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <create_parent_folder>Y</create_parent_folder>
+      <DoNotOpenNewFileInit>N</DoNotOpenNewFileInit>
+      <servlet_output>N</servlet_output>
+    </file>
+    <fields>
+      <field>
+        <name>id_produto</name>
+        <element>id_produto</element>
+      </field>
+      <field>
+        <name>nome</name>
+        <element>nome</element>
+      </field>
+      <field>
+        <name>categoria</name>
+        <element>categoria</element>
+      </field>
+      <field>
+        <name>preco</name>
+        <element>preco</element>
+      </field>
+      <field>
+        <name>stock</name>
+        <element>stock</element>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>192</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
